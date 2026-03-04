@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <!--
+      Head section for Ghim's CV page
+      - Uses the same font and stylesheet as the home page
+      - Keeps HTML5 semantics and responsive meta for mobile‑first layout
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ghim's CV | Ghim &amp; Tonkla - Personal Website</title>
+    <meta
+      name="description"
+      content="Curriculum vitae and profile of Natthanitcha Kitichayachot (Ghimhong / Ghim)."
+    />
+
+    <!-- Google Fonts: Sarabun (primary Thai font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Global pastel theme & layout utilities -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!--
+      Page wrapper keeps footer at the bottom and
+      still works as simple linear content if CSS is disabled.
+    -->
+    <div class="page-wrapper">
+      <!--
+        Shared site header and navigation
+        - Same structure as index.html
+        - Active state moved to "Ghim's CV" for this page
+      -->
+      <header class="site-header">
+        <div class="container navbar" role="navigation" aria-label="Main navigation">
+          <!-- Brand / logo area -->
+          <a href="index.html" class="navbar__brand">
+            <span class="navbar__brand-icon" aria-hidden="true">❤</span>
+            <span>G &amp; T</span>
+          </a>
+
+          <!-- Primary navigation links -->
+          <nav aria-label="Primary">
+            <ul class="navbar__links">
+              <li>
+                <a href="index.html" class="navbar__link">Home</a>
+              </li>
+              <li>
+                <a
+                  href="ghim-cv.html"
+                  class="navbar__link navbar__link--active"
+                  aria-current="page"
+                  >Ghim's CV</a
+                >
+              </li>
+              <li>
+                <a href="tonkla-cv.html" class="navbar__link">Tonkla's CV</a>
+              </li>
+              <li>
+                <a href="memories.html" class="navbar__link">Our Memories</a>
+              </li>
+              <li>
+                <a href="anniversary.html" class="navbar__link">Anniversary</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!--
+        Main content area
+        - Uses CSS Grid (.cv-layout) to create a 2‑column layout on larger screens
+        - On mobile, columns stack vertically (mobile‑first)
+      -->
+      <main class="main" id="main-content">
+        <section class="section">
+          <div class="container">
+            <!-- Page heading for screen readers and users -->
+            <header class="section-heading text-center">
+              <p class="section-heading__eyebrow">
+                <span aria-hidden="true">👩‍💻</span>
+                <span>Curriculum Vitae</span>
+              </p>
+              <h1 class="section-heading__title">Ghimhong / Ghim</h1>
+              <p class="section-heading__subtitle">
+                นางสาวณัฏฐณิชชา กิติชยาโชติ – นักศึกษาครุศาสตร์วิศวกรรมคอมพิวเตอร์ปีที่ 3
+                ที่รักการสอน รักการเรียนรู้ และรักการวิ่ง
+              </p>
+            </header>
+
+            <!--
+              CV layout wrapper
+              - Sidebar (profile) on the left
+              - Detail sections (education, experience, hobbies) on the right
+            -->
+            <div class="cv-layout" aria-label="Ghimhong profile layout">
+              <!--
+                Profile sidebar (left column)
+                - Profile image and key personal information
+              -->
+              <aside class="cv-layout__sidebar" aria-label="Basic profile information">
+                <!-- Main profile card -->
+                <article class="cv-profile-card">
+                  <!-- Profile image (placeholder pastel) -->
+                  <figure class="text-center">
+                    <img
+                      src="https://via.placeholder.com/160x160/DEE9FF/ffffff?text=G"
+                      alt="Ghimhong Profile Picture"
+                      width="160"
+                      height="160"
+                      style="border-radius: 999px; margin: 0 auto 0.9rem; display: block;"
+                    />
+                    <figcaption class="text-soft" style="font-size: 0.8rem;">
+                      รูปโปรไฟล์ชั่วคราว (placeholder) ของ Ghimhong
+                    </figcaption>
+                  </figure>
+
+                  <!-- Name & nickname -->
+                  <div class="mt-sm">
+                    <p class="cv-profile-card__name">นางสาวณัฏฐณิชชา กิติชยาโชติ</p>
+                    <p class="cv-profile-card__role">Ghimhong (Ghim)</p>
+                  </div>
+
+                  <!-- Basic meta information -->
+                  <dl class="cv-profile-card__meta" aria-label="Student information">
+                    <div>
+                      <dt class="text-soft">รหัสนักศึกษา</dt>
+                      <dd>66030232</dd>
+                    </div>
+                    <div>
+                      <dt class="text-soft">วันเกิด</dt>
+                      <dd>วันศุกร์ที่ 26 กันยายน 2546</dd>
+                    </div>
+                    <div>
+                      <dt class="text-soft">สถานะ</dt>
+                      <dd>นักศึกษาชั้นปีที่ 3 ครุศาสตร์วิศวกรรมคอมพิวเตอร์</dd>
+                    </div>
+                  </dl>
+
+                  <!-- Interest tags -->
+                  <div class="mt-md" aria-label="Key interests">
+                    <div class="tag-list">
+                      <span class="tag tag--blue">Teaching</span>
+                      <span class="tag tag--blue">Spreadsheet</span>
+                      <span class="tag tag--pink">Running</span>
+                      <span class="tag tag--pink">BMC</span>
+                    </div>
+                  </div>
+                </article>
+              </aside>
+
+              <!--
+                Right column: detailed CV sections
+                - Education
+                - Experience
+                - Hobbies / passions
+              -->
+              <section class="cv-layout__main" aria-label="Detailed CV sections">
+                <!-- Education card -->
+                <article class="cv-section-card">
+                  <header class="cv-section-card__title">
+                    <span class="cv-section-card__title-icon" aria-hidden="true">🎓</span>
+                    <h2>การศึกษา (Education)</h2>
+                  </header>
+
+                  <div>
+                    <p class="cv-section-card__item-title">
+                      นักศึกษาปีที่ 3 คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี
+                    </p>
+                    <p class="cv-section-card__item-meta">
+                      สาขาครุศาสตร์วิศวกรรม แขนงคอมพิวเตอร์ –
+                      สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง (สจล.)
+                    </p>
+                  </div>
+                </article>
+
+                <!-- Experience card -->
+                <article class="cv-section-card">
+                  <header class="cv-section-card__title">
+                    <span class="cv-section-card__title-icon" aria-hidden="true">💼</span>
+                    <h2>ประสบการณ์ (Experience)</h2>
+                  </header>
+
+                  <!-- Experience item 1: Teaching Assistant -->
+                  <div class="mt-sm">
+                    <p class="cv-section-card__item-title">
+                      ผู้ช่วยสอน (Teaching Assistant) – รายวิชา Office Programs
+                      (Spreadsheet Program)
+                    </p>
+                    <p class="cv-section-card__item-body">
+                      ช่วยเตรียมเนื้อหาและดูแลการสอนในห้องเรียน
+                      รวมถึงให้คำปรึกษานักศึกษาด้านการใช้งานโปรแกรม Spreadsheet
+                      เพื่อสร้างความเข้าใจทั้งภาคทฤษฎีและภาคปฏิบัติ
+                    </p>
+                  </div>
+
+                  <!-- Experience item 2: Business Model Canvas project -->
+                  <div class="mt-md">
+                    <p class="cv-section-card__item-title">
+                      โปรเจกต์ Business Model Canvas – Thai President Foods Public
+                      Company Limited (TFMAMA)
+                    </p>
+                    <p class="cv-section-card__item-body">
+                      ร่วมวิเคราะห์และออกแบบ Business Model Canvas ให้กับแบรนด์ภายใต้
+                      บริษัท ไทยเพรซิเดนท์ฟูดส์ จำกัด (มหาชน) (TFMAMA)
+                      เพื่อนำเสนอแนวทางการพัฒนาธุรกิจและคุณค่าให้กับลูกค้า
+                    </p>
+                  </div>
+                </article>
+
+                <!-- Hobbies & passions card -->
+                <article class="cv-section-card">
+                  <header class="cv-section-card__title">
+                    <span class="cv-section-card__title-icon" aria-hidden="true">🏃‍♀️</span>
+                    <h2>งานอดิเรก &amp; ความหลงใหล (Hobbies &amp; Passions)</h2>
+                  </header>
+
+                  <p class="cv-section-card__item-body">
+                    ชื่นชอบการวิ่งเป็นประจำ ทั้งวิ่งเดี่ยวและวิ่งไปพร้อมกับเพื่อน ๆ
+                    โดยตั้งเป้าหมายวิ่งสะสมระยะทางให้ครบ
+                    <strong>100 กิโลเมตรภายในระยะเวลา 1 เดือน (กุมภาพันธ์)</strong>
+                    เพื่อท้าทายตัวเอง สร้างวินัย และดูแลสุขภาพไปพร้อมกัน
+                  </p>
+                </article>
+              </section>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Shared footer, same as index.html -->
+      <footer class="site-footer">
+        <div class="container site-footer__inner">
+          <p>
+            Made with <span class="site-footer__heart" aria-hidden="true">❤</span>
+            by Ghim &amp; Tonkla
+          </p>
+          <p class="text-soft">Together since July 26, 2022</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

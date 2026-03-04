@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <!--
+      Head section
+      - Loads Thai font "Sarabun" from Google Fonts
+      - Sets responsive viewport meta
+      - Connects global stylesheet (style.css)
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ghim &amp; Tonkla - Personal Website</title>
+    <meta
+      name="description"
+      content="A little pastel corner to celebrate the story of Ghim &amp; Tonkla."
+    />
+
+    <!-- Google Fonts: Sarabun (primary Thai/Latin font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Global stylesheet with pastel theme and layout utilities -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!--
+      Page wrapper
+      - Flex column so footer stays at bottom
+      - Works without CSS as a normal linear page
+    -->
+    <div class="page-wrapper">
+      <!--
+        Site header & navigation
+        - Semantic <header> with <nav>
+        - Links to all 5 pages in the project
+        - Designed mobile‑first, then enhanced with sticky / blur in CSS
+      -->
+      <header class="site-header">
+        <div class="container navbar" role="navigation" aria-label="Main navigation">
+          <!-- Brand / logo area -->
+          <a href="index.html" class="navbar__brand">
+            <span class="navbar__brand-icon" aria-hidden="true">❤</span>
+            <span>G &amp; T</span>
+          </a>
+
+          <!-- Primary navigation links -->
+          <nav aria-label="Primary">
+            <ul class="navbar__links">
+              <li>
+                <a
+                  href="index.html"
+                  class="navbar__link navbar__link--active"
+                  aria-current="page"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="ghim-cv.html" class="navbar__link">Ghim's CV</a>
+              </li>
+              <li>
+                <a href="tonkla-cv.html" class="navbar__link">Tonkla's CV</a>
+              </li>
+              <li>
+                <a href="memories.html" class="navbar__link">Our Memories</a>
+              </li>
+              <li>
+                <a href="anniversary.html" class="navbar__link">Anniversary</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!--
+        Main content
+        - Contains hero section and quick links
+        - Structured with <main> and <section> elements for clarity
+      -->
+      <main class="main" id="main-content">
+        <!--
+          Hero section
+          - Introduces the website with a large heading
+          - Call‑to‑action buttons guide users to story & anniversary clock
+        -->
+        <section class="section section--hero">
+          <div class="container hero">
+            <!-- Small badge / eyebrow text above main headline -->
+            <div class="hero__badge-wrapper">
+              <p class="hero__badge">
+                <span aria-hidden="true">✨</span>
+                <span>Welcome to our little corner</span>
+              </p>
+            </div>
+
+            <!-- Main hero heading -->
+            <h1 class="hero__title">
+              Welcome to
+              <span class="hero__highlight">Ghim &amp; Tonkla's World</span>
+            </h1>
+
+            <!-- Short description explaining the purpose of the site -->
+            <p class="hero__subtitle">
+              พื้นที่เล็ก ๆ เพื่อเก็บความรัก ความทรงจำ และทุกโมเมนต์ที่สวยงามของเรา
+              ตั้งแต่วันแรกจนถึงวันนี้
+            </p>
+
+            <!-- Primary actions / quick shortcuts from the hero area -->
+            <div class="hero__actions" aria-label="Quick actions from hero">
+              <a href="memories.html" class="btn btn--primary">
+                Our Story
+              </a>
+              <a href="anniversary.html" class="btn btn--ghost">
+                Anniversary Clock
+              </a>
+            </div>
+
+            <p class="hero__actions-subtext">
+              เลื่อนลงด้านล่างเพื่อดูโปรไฟล์ของเรา และย้อนดูเรื่องราวตั้งแต่วันแรก 🌷
+            </p>
+          </div>
+        </section>
+
+        <!--
+          Quick links section
+          - Uses CSS Grid (card-grid) to layout four cards
+          - Each card acts as a large, tappable link to another page
+        -->
+        <section
+          class="section section--subtle"
+          aria-labelledby="quick-links-heading"
+        >
+          <div class="container">
+            <!-- Section heading with small eyebrow label -->
+            <header class="section-heading">
+              <p class="section-heading__eyebrow">
+                <span aria-hidden="true">💌</span>
+                <span>Start exploring</span>
+              </p>
+              <h2 id="quick-links-heading" class="section-heading__title">
+                Quick links to our world
+              </h2>
+              <p class="section-heading__subtitle">
+                เลือกดูโปรไฟล์ของเราทีละคน หรือกระโดดไปยังไทม์ไลน์ความทรงจำ
+                และนาฬิกานับเวลาที่เราอยู่ด้วยกัน
+              </p>
+            </header>
+
+            <!-- Card grid with 4 navigation cards -->
+            <div class="card-grid" aria-label="Quick navigation cards">
+              <!-- Card 1: Ghim's CV -->
+              <a href="ghim-cv.html" class="card">
+                <div>
+                  <div class="card__icon-circle" aria-hidden="true">G</div>
+                  <h3 class="card__title">Ghim's CV</h3>
+                  <p class="card__subtitle">ทำความรู้จักกับ Ghimhong ให้มากขึ้น</p>
+                </div>
+                <p class="card__link-arrow" aria-hidden="true">Explore →</p>
+              </a>
+
+              <!-- Card 2: Tonkla's CV -->
+              <a href="tonkla-cv.html" class="card">
+                <div>
+                  <div class="card__icon-circle" aria-hidden="true">T</div>
+                  <h3 class="card__title">Tonkla's CV</h3>
+                  <p class="card__subtitle">รู้จัก Smart Farm Engineer ผู้มาพร้อมรอยยิ้ม</p>
+                </div>
+                <p class="card__link-arrow" aria-hidden="true">Meet Tonkla →</p>
+              </a>
+
+              <!-- Card 3: Memories timeline -->
+              <a href="memories.html" class="card">
+                <div>
+                  <div class="card__icon-circle" aria-hidden="true">🕊</div>
+                  <h3 class="card__title">Our Memories</h3>
+                  <p class="card__subtitle">
+                    ไทม์ไลน์เรื่องราวตั้งแต่เฟรชชี่จนถึงวันนี้
+                  </p>
+                </div>
+                <p class="card__link-arrow" aria-hidden="true">View timeline →</p>
+              </a>
+
+              <!-- Card 4: Anniversary clock -->
+              <a href="anniversary.html" class="card">
+                <div>
+                  <div class="card__icon-circle" aria-hidden="true">⏰</div>
+                  <h3 class="card__title">Anniversary Clock</h3>
+                  <p class="card__subtitle">
+                    นับทุกวินาทีที่เราอยู่ด้วยกันตั้งแต่ 26 กรกฎาคม 2565
+                  </p>
+                </div>
+                <p class="card__link-arrow" aria-hidden="true">See the time →</p>
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!--
+        Site footer
+        - Simple closing line and attribution
+        - Still readable and meaningful without any styling
+      -->
+      <footer class="site-footer">
+        <div class="container site-footer__inner">
+          <p>
+            Made with <span class="site-footer__heart" aria-hidden="true">❤</span>
+            by Ghim &amp; Tonkla
+          </p>
+          <p class="text-soft">Together since July 26, 2022</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
