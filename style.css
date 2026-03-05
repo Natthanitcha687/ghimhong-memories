@@ -828,15 +828,21 @@ ul, ol {
 
 .hidden { display: none !important; }
 
-/* Soft fade / slide used for Intersection Observer (memories page) */
+/* Soft fade / slide used for Intersection Observer (memories page)
+   - Progressive enhancement: elements are fully visible by default
+   - When JavaScript is enabled, we add a .js class to <body>
+     and then animate .fade-in-up elements into view. */
 .fade-in-up {
-  opacity: 0;
-  transform: translateY(18px);
   transition: opacity 320ms cubic-bezier(0.22, 0.61, 0.36, 1),
               transform 320ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-.fade-in-up.is-visible {
+body.js .fade-in-up {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+body.js .fade-in-up.is-visible {
   opacity: 1;
   transform: translateY(0);
 }

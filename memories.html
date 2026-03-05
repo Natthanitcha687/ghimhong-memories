@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <!--
+      Head section for Our Memories page
+      - Reuses shared font and stylesheet
+      - Keeps responsive viewport for mobile‑first design
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Our Memories | Ghim &amp; Tonkla - Personal Website</title>
+    <meta
+      name="description"
+      content="A vertical timeline of key memories in the story of Ghim &amp; Tonkla."
+    />
+
+    <!-- Google Fonts: Sarabun (primary Thai font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Global pastel theme & layout utilities -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!--
+      Page wrapper for sticky header + footer at bottom.
+      Content stays linear and readable even without CSS or JS.
+    -->
+    <div class="page-wrapper">
+      <!-- Shared header & navigation with active state on "Our Memories" -->
+      <header class="site-header">
+        <div class="container navbar" role="navigation" aria-label="Main navigation">
+          <!-- Brand / logo area -->
+          <a href="index.html" class="navbar__brand">
+            <span class="navbar__brand-icon" aria-hidden="true">❤</span>
+            <span>G &amp; T</span>
+          </a>
+
+          <!-- Primary navigation links -->
+          <nav aria-label="Primary">
+            <ul class="navbar__links">
+              <li>
+                <a href="index.html" class="navbar__link">Home</a>
+              </li>
+              <li>
+                <a href="ghim-cv.html" class="navbar__link">Ghim's CV</a>
+              </li>
+              <li>
+                <a href="tonkla-cv.html" class="navbar__link">Tonkla's CV</a>
+              </li>
+              <li>
+                <a
+                  href="memories.html"
+                  class="navbar__link navbar__link--active"
+                  aria-current="page"
+                  >Our Memories</a
+                >
+              </li>
+              <li>
+                <a href="anniversary.html" class="navbar__link">Anniversary</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!--
+        Main content area
+        - Vertical timeline of memories with alternating cards
+      -->
+      <main class="main" id="main-content">
+        <section class="section" aria-labelledby="memories-heading">
+          <div class="container">
+            <!-- Page heading + subtitle -->
+            <header class="section-heading">
+              <p class="section-heading__eyebrow">
+                <span aria-hidden="true">📖</span>
+                <span>เรื่องราวความทรงจำของเรา</span>
+              </p>
+              <h1 id="memories-heading" class="section-heading__title">
+                Our Memories
+              </h1>
+              <p class="section-heading__subtitle">
+                เรื่องราวจากวันแรกที่บังเอิญได้พบกัน จนถึงวันที่จับมือกันเริ่มต้นใหม่
+              </p>
+            </header>
+
+            <!--
+              Timeline wrapper
+              - Center line is drawn with ::before in CSS
+              - Each item is an <article> so screen readers see separate events
+            -->
+            <div class="timeline" aria-label="Timeline of our memories">
+              <!-- Timeline item 1 -->
+              <article class="timeline-item">
+                <div class="timeline-item__dot" aria-hidden="true"></div>
+                <div class="timeline-item__card fade-in-up" data-timeline-observe>
+                  <p class="timeline-item__label">จุดเริ่มต้น</p>
+                  <h2 class="timeline-item__title">เฟรชชี่ ม.นเรศวร</h2>
+                  <p class="timeline-item__body">
+                    บังเอิญได้เรียนเซคเดียวกันตอนปี 1 ที่มหาวิทยาลัยนเรศวร ตอนนั้นยังไม่ได้คุยกันมาก
+                    แต่จำได้ว่าเลิกคลาสแล้วกิมหันไปบ๊ายบายต้นกล้าก่อนกลับหอทุกครั้ง
+                  </p>
+                </div>
+              </article>
+
+              <!-- Timeline item 2 -->
+              <article class="timeline-item">
+                <div class="timeline-item__dot" aria-hidden="true"></div>
+                <div class="timeline-item__card fade-in-up" data-timeline-observe>
+                  <p class="timeline-item__label">ทักปุ๊บ สปาร์กปั๊บ</p>
+                  <h2 class="timeline-item__title">ทักปุ๊บ สปาร์กปั๊บ</h2>
+                  <p class="timeline-item__body">
+                    เจอกันอีกครั้งตอนเรียนเซครวม คราวนี้ต้นกล้าเป็นฝ่ายเข้ามาทักก่อน
+                    ส่วนกิมก็เนียน ๆ ไปขอไอจีจากเพื่อนแล้วทักไปคุยต่อในแชต
+                    จากเพื่อนร่วมคลาสเริ่มกลายเป็นคนที่อยากคุยด้วยทุกวัน
+                  </p>
+                </div>
+              </article>
+
+              <!-- Timeline item 3 -->
+              <article class="timeline-item">
+                <div class="timeline-item__dot" aria-hidden="true"></div>
+                <div class="timeline-item__card fade-in-up" data-timeline-observe>
+                  <p class="timeline-item__label">เดตแรก &amp; วันครบรอบ</p>
+                  <h2 class="timeline-item__title">เดตแรก &amp; วันครบรอบ</h2>
+                  <p class="timeline-item__body">
+                    เริ่มชวนกันไปดูหนัง ไปเดินเล่น ไปเที่ยวด้วยกันบ่อยขึ้นเรื่อย ๆ
+                    จนสุดท้ายก็ตกลงเป็นแฟนกัน และกำหนดวันนั้นให้เป็นวันครบรอบของเรา
+                  </p>
+                </div>
+              </article>
+
+              <!-- Timeline item 4 -->
+              <article class="timeline-item">
+                <div class="timeline-item__dot" aria-hidden="true"></div>
+                <div class="timeline-item__card fade-in-up" data-timeline-observe>
+                  <p class="timeline-item__label">จับมือกันซิ่ว</p>
+                  <h2 class="timeline-item__title">จับมือกันซิ่ว</h2>
+                  <p class="timeline-item__body">
+                    เมื่อจบเทอม 1 ทั้งคู่ตัดสินใจจะซิ่วออกจากมหาวิทยาลัยเดิม
+                    เลยจับมือกันตั้งใจอ่านหนังสือ เตรียมสอบ และเรียนให้จบปี 1 เทอม 2
+                    เพื่อเดินต่อไปยังเส้นทางใหม่ด้วยกัน
+                  </p>
+                </div>
+              </article>
+
+              <!-- Timeline item 5 -->
+              <article class="timeline-item">
+                <div class="timeline-item__dot" aria-hidden="true"></div>
+                <div class="timeline-item__card fade-in-up" data-timeline-observe>
+                  <p class="timeline-item__label">เริ่มต้นใหม่</p>
+                  <h2 class="timeline-item__title">เริ่มต้นใหม่ที่ สจล.</h2>
+                  <p class="timeline-item__body">
+                    จับมือกันย้ายมาเป็นเด็กพระจอมเกล้าลาดกระบัง หาคอนโดอยู่ใกล้ ๆ มหาวิทยาลัยด้วยกัน
+                    เลิกเรียนก็กลับมาเจอกัน ชวนกันไปวิ่ง ออกกำลังกาย และทำกิจกรรมที่ชอบ
+                    เป็นช่วงเวลาที่รู้สึกว่ามีความสุขและเติมเต็มที่สุด
+                  </p>
+                </div>
+              </article>
+
+              <!-- Closing note at the end of the timeline -->
+              <div class="text-center mt-md">
+                <p class="text-soft">...and our story continues</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Shared footer -->
+      <footer class="site-footer">
+        <div class="container site-footer__inner">
+          <p>
+            Made with <span class="site-footer__heart" aria-hidden="true">❤</span>
+            by Ghim &amp; Tonkla
+          </p>
+          <p class="text-soft">Together since July 26, 2022</p>
+        </div>
+      </footer>
+    </div>
+
+    <!--
+      Progressive enhancement: Intersection Observer scroll animation
+      - If JS or IntersectionObserver is not available, all cards stay visible.
+      - When supported, we add a .js class to <body> and animate
+        each .fade-in-up card when it enters the viewport.
+    -->
+    <script>
+      (function () {
+        // Guard: if browser doesn't support IntersectionObserver, exit early
+        if (!('IntersectionObserver' in window)) {
+          return;
+        }
+
+        // Mark that JavaScript is active so CSS can safely hide .fade-in-up
+        document.body.classList.add('js');
+
+        // Select all timeline cards that should animate on scroll
+        var cards = document.querySelectorAll('[data-timeline-observe]');
+        if (!cards.length) return;
+
+        // Create an observer with a slightly earlier trigger (0.15 of the card in view)
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                // Add .is-visible so CSS plays fade-in / slide-up animation
+                entry.target.classList.add('is-visible');
+                // Once animated, we no longer need to observe this element
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.15,
+          }
+        );
+
+        // Attach the observer to each card
+        cards.forEach(function (card) {
+          observer.observe(card);
+        });
+      })();
+    </script>
+  </body>
+</html>
