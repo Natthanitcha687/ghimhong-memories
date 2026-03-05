@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <!--
+      Head section for Anniversary page
+      - Uses shared Sarabun font and global stylesheet
+      - Mobile‑first via responsive viewport
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Anniversary Clock | Ghim &amp; Tonkla - Personal Website</title>
+    <meta
+      name="description"
+      content="Real-time countup clock showing how long Ghim &amp; Tonkla have been together since July 26, 2022."
+    />
+
+    <!-- Google Fonts: Sarabun (primary Thai font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Global pastel theme & layout utilities -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!--
+      Page wrapper so footer stays at bottom even on tall screens.
+      Content remains fully usable when CSS/JS are disabled.
+    -->
+    <div class="page-wrapper">
+      <!-- Shared header & navigation with active state on "Anniversary" -->
+      <header class="site-header">
+        <div class="container navbar" role="navigation" aria-label="Main navigation">
+          <!-- Brand / logo area -->
+          <a href="index.html" class="navbar__brand">
+            <span class="navbar__brand-icon" aria-hidden="true">❤</span>
+            <span>G &amp; T</span>
+          </a>
+
+          <!-- Primary navigation links -->
+          <nav aria-label="Primary">
+            <ul class="navbar__links">
+              <li>
+                <a href="index.html" class="navbar__link">Home</a>
+              </li>
+              <li>
+                <a href="ghim-cv.html" class="navbar__link">Ghim's CV</a>
+              </li>
+              <li>
+                <a href="tonkla-cv.html" class="navbar__link">Tonkla's CV</a>
+              </li>
+              <li>
+                <a href="memories.html" class="navbar__link">Our Memories</a>
+              </li>
+              <li>
+                <a
+                  href="anniversary.html"
+                  class="navbar__link navbar__link--active"
+                  aria-current="page"
+                  >Anniversary</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!--
+        Main content area
+        - Centered anniversary clock using existing utility classes
+      -->
+      <main class="main" id="main-content">
+        <section class="section">
+          <div class="container anniversary">
+            <!-- Heart badge at the top -->
+            <div class="anniversary__badge" aria-hidden="true">❤</div>
+
+            <!-- Headline & subtext -->
+            <h1 class="anniversary__title">Our Time Together</h1>
+            <p class="anniversary__subtitle">
+              ตั้งแต่วันที่ 26 กรกฎาคม พ.ศ. 2565
+            </p>
+
+            <!-- Sweet supporting line -->
+            <p class="mt-md">
+              นับทุกวินาทีที่เราอยู่ด้วยกัน เพราะทุกวินาทีมีค่าที่สุดสำหรับเรา
+            </p>
+
+            <!--
+              Counter grid
+              - Four cards for days, hours, minutes, seconds
+              - Each span has a fallback message in case JavaScript is disabled
+            -->
+            <div class="anniversary-grid mt-md" aria-label="Time we have been together">
+              <!-- Days card -->
+              <div class="anniversary-pill">
+                <span id="days-count" class="anniversary-pill__value">--</span>
+                <span class="anniversary-pill__label">DAYS</span>
+              </div>
+
+              <!-- Hours card -->
+              <div class="anniversary-pill">
+                <span id="hours-count" class="anniversary-pill__value">--</span>
+                <span class="anniversary-pill__label">HOURS</span>
+              </div>
+
+              <!-- Minutes card -->
+              <div class="anniversary-pill">
+                <span id="minutes-count" class="anniversary-pill__value">--</span>
+                <span class="anniversary-pill__label">MINUTES</span>
+              </div>
+
+              <!-- Seconds card -->
+              <div class="anniversary-pill">
+                <span id="seconds-count" class="anniversary-pill__value">--</span>
+                <span class="anniversary-pill__label">SECONDS</span>
+              </div>
+            </div>
+
+            <!-- Fallback description when JavaScript is disabled -->
+            <p class="mt-md text-soft" id="clock-fallback">
+              กำลังคำนวณเวลา... หากคุณปิดการทำงานของ JavaScript
+              จะไม่สามารถแสดงนาฬิกานับเวลานี้ได้ แต่ความทรงจำยังอยู่เหมือนเดิม 💙
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <!-- Shared footer -->
+      <footer class="site-footer">
+        <div class="container site-footer__inner">
+          <p>
+            Made with <span class="site-footer__heart" aria-hidden="true">❤</span>
+            by Ghim &amp; Tonkla
+          </p>
+          <p class="text-soft">Together since July 26, 2022</p>
+        </div>
+      </footer>
+    </div>
+
+    <!--
+      Anniversary countup clock (vanilla JavaScript)
+
+      - Uses a fixed start date: 26 July 2022 (local time)
+      - Every second we calculate the difference between now and the start date
+      - The difference is converted into days, hours, minutes, seconds
+      - Values are written into the corresponding spans in the UI
+      - When JS is working, we remove the fallback text for users
+    -->
+    <script>
+      (function () {
+        // DOM lookups for output elements
+        var daysEl = document.getElementById('days-count');
+        var hoursEl = document.getElementById('hours-count');
+        var minutesEl = document.getElementById('minutes-count');
+        var secondsEl = document.getElementById('seconds-count');
+        var fallbackEl = document.getElementById('clock-fallback');
+
+        if (!daysEl || !hoursEl || !minutesEl || !secondsEl) {
+          // Safety guard: if elements are missing, do nothing.
+          return;
+        }
+
+        // Mark that JavaScript is active (optional but may be useful
+        // for other progressive enhancements such as subtle animations).
+        document.body.classList.add('js');
+
+        // Start date of the relationship: 26 July 2022 at 00:00 local time.
+        // Using ISO date keeps it easy to read and maintain.
+        var startDate = new Date('2022-07-26T00:00:00');
+
+        // Helper to pad numbers with a leading zero
+        function pad(value) {
+          return String(value).padStart(2, '0');
+        }
+
+        // Main update function
+        function updateClock() {
+          var now = new Date();
+          var diffMs = now.getTime() - startDate.getTime();
+
+          // If the start date is somehow in the future, clamp to zero
+          if (diffMs < 0) diffMs = 0;
+
+          var diffSecondsTotal = Math.floor(diffMs / 1000);
+
+          var days = Math.floor(diffSecondsTotal / (60 * 60 * 24));
+          var remainingAfterDays = diffSecondsTotal % (60 * 60 * 24);
+
+          var hours = Math.floor(remainingAfterDays / (60 * 60));
+          var remainingAfterHours = remainingAfterDays % (60 * 60);
+
+          var minutes = Math.floor(remainingAfterHours / 60);
+          var seconds = remainingAfterHours % 60;
+
+          // Write formatted values into the UI
+          daysEl.textContent = days.toString();
+          hoursEl.textContent = pad(hours);
+          minutesEl.textContent = pad(minutes);
+          secondsEl.textContent = pad(seconds);
+
+          // Remove fallback text once the first calculation has succeeded
+          if (fallbackEl && fallbackEl.parentNode) {
+            fallbackEl.parentNode.removeChild(fallbackEl);
+            fallbackEl = null; // Avoid trying to remove again
+          }
+        }
+
+        // Initial paint so users see values immediately on load
+        updateClock();
+        // Update every second for a real-time experience
+        setInterval(updateClock, 1000);
+      })();
+    </script>
+  </body>
+</html>
