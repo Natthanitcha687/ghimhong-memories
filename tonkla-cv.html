@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <!--
+      Head section for Tonkla's CV page
+      - Reuses the same font and stylesheet to keep a consistent visual theme
+      - Includes responsive meta tag for mobile‑first layout
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tonkla's CV | Ghim &amp; Tonkla - Personal Website</title>
+    <meta
+      name="description"
+      content="Curriculum vitae and profile of Papanwich Phankaeo (Tonkla)."
+    />
+
+    <!-- Google Fonts: Sarabun (primary Thai font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Global pastel theme & layout utilities -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Page wrapper so footer sits at the bottom while keeping content readable without CSS -->
+    <div class="page-wrapper">
+      <!--
+        Shared site header and navigation
+        - Structure matches other pages
+        - Active state now set on "Tonkla's CV"
+      -->
+      <header class="site-header">
+        <div class="container navbar" role="navigation" aria-label="Main navigation">
+          <!-- Brand / logo area -->
+          <a href="index.html" class="navbar__brand">
+            <span class="navbar__brand-icon" aria-hidden="true">❤</span>
+            <span>G &amp; T</span>
+          </a>
+
+          <!-- Primary navigation links -->
+          <nav aria-label="Primary">
+            <ul class="navbar__links">
+              <li>
+                <a href="index.html" class="navbar__link">Home</a>
+              </li>
+              <li>
+                <a href="ghim-cv.html" class="navbar__link">Ghim's CV</a>
+              </li>
+              <li>
+                <a
+                  href="tonkla-cv.html"
+                  class="navbar__link navbar__link--active"
+                  aria-current="page"
+                  >Tonkla's CV</a
+                >
+              </li>
+              <li>
+                <a href="memories.html" class="navbar__link">Our Memories</a>
+              </li>
+              <li>
+                <a href="anniversary.html" class="navbar__link">Anniversary</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!--
+        Main content area
+        - Uses the same .cv-layout grid pattern as Ghim's page
+        - Mobile‑first: columns stack; desktop: two‑column about 1:2 ratio
+      -->
+      <main class="main" id="main-content">
+        <section class="section">
+          <div class="container">
+            <!-- Page heading -->
+            <header class="section-heading text-center">
+              <p class="section-heading__eyebrow">
+                <span aria-hidden="true">🌱</span>
+                <span>Curriculum Vitae</span>
+              </p>
+              <h1 class="section-heading__title">Tonkla</h1>
+              <p class="section-heading__subtitle">
+                นายปพนวิช พันธ์แก้ว – ว่าที่วิศวกรสมาร์ตฟาร์มที่รักธรรมชาติ เทคโนโลยี และการวิ่ง
+              </p>
+            </header>
+
+            <!-- Two‑column CV layout -->
+            <div class="cv-layout" aria-label="Tonkla profile layout">
+              <!--
+                Profile sidebar (left column)
+                - Shows basic personal information and quick facts
+              -->
+              <aside class="cv-layout__sidebar" aria-label="Basic profile information">
+                <article class="cv-profile-card">
+                  <!-- Profile image (placeholder pastel) -->
+                  <figure class="text-center">
+                    <img
+                      src="https://via.placeholder.com/160x160/E7ECFF/ffffff?text=T"
+                      alt="Tonkla Profile Picture"
+                      width="160"
+                      height="160"
+                      style="border-radius: 999px; margin: 0 auto 0.9rem; display: block;"
+                    />
+                    <figcaption class="text-soft" style="font-size: 0.8rem;">
+                      รูปโปรไฟล์ชั่วคราว (placeholder) ของ Tonkla
+                    </figcaption>
+                  </figure>
+
+                  <!-- Name & nickname -->
+                  <div class="mt-sm">
+                    <p class="cv-profile-card__name">นายปพนวิช พันธ์แก้ว</p>
+                    <p class="cv-profile-card__role">Tonkla (ต้นกล้า)</p>
+                  </div>
+
+                  <!-- Basic meta information -->
+                  <dl class="cv-profile-card__meta" aria-label="Personal information">
+                    <div>
+                      <dt class="text-soft">อายุ</dt>
+                      <dd>22 ปี</dd>
+                    </div>
+                    <div>
+                      <dt class="text-soft">วันเกิด</dt>
+                      <dd>วันพฤหัสบดีที่ 12 กุมภาพันธ์ 2547</dd>
+                    </div>
+                    <div>
+                      <dt class="text-soft">ข้อมูลสรีระ</dt>
+                      <dd>ส่วนสูง 175 cm / น้ำหนัก 70 kg</dd>
+                    </div>
+                  </dl>
+
+                  <!-- Interest tags / quick labels -->
+                  <div class="mt-md" aria-label="Key interests">
+                    <div class="tag-list">
+                      <span class="tag tag--blue">Smart Farm</span>
+                      <span class="tag tag--blue">AgriTech</span>
+                      <span class="tag tag--pink">Engineering</span>
+                      <span class="tag tag--pink">Running</span>
+                    </div>
+                  </div>
+                </article>
+              </aside>
+
+              <!--
+                Right column: detailed CV sections
+                - Education
+                - Hobbies & passions
+                - Interests (optional third card to mirror the visual structure)
+              -->
+              <section class="cv-layout__main" aria-label="Detailed CV sections">
+                <!-- Education card -->
+                <article class="cv-section-card">
+                  <header class="cv-section-card__title">
+                    <span class="cv-section-card__title-icon" aria-hidden="true">🎓</span>
+                    <h2>การศึกษา (Education)</h2>
+                  </header>
+
+                  <div>
+                    <p class="cv-section-card__item-title">
+                      นักศึกษาชั้นปีที่ 3 หลักสูตรควบระดับปริญญาตรี 2 ปริญญา
+                    </p>
+                    <p class="cv-section-card__item-meta">
+                      คณะเทคโนโลยีการเกษตร สาขาวิชาการจัดการสมาร์ตฟาร์ม และคณะวิศวกรรมศาสตร์
+                      สาขาวิชาวิศวกรรมเกษตรอัจฉริยะ –
+                      สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง (สจล.)
+                    </p>
+                  </div>
+                </article>
+
+                <!-- Hobbies & passions card -->
+                <article class="cv-section-card">
+                  <header class="cv-section-card__title">
+                    <span class="cv-section-card__title-icon" aria-hidden="true">🏃‍♂️</span>
+                    <h2>งานอดิเรก &amp; ความหลงใหล (Hobbies &amp; Passions)</h2>
+                  </header>
+
+                  <p class="cv-section-card__item-body">
+                    ชื่นชอบการวิ่งเป็นชีวิตจิตใจ
+                    ชอบเก็บสถิติและพัฒนาตัวเองในทุกครั้งที่ออกวิ่ง
+                    ล่าสุดสามารถก้าวข้ามขีดจำกัดของตัวเองด้วยการวิ่งระยะ
+                    <strong>10 กิโลเมตร (10k) แรกได้สำเร็จ</strong>
+                    ซึ่งเป็นจุดเริ่มต้นของเป้าหมายการวิ่งระยะไกลในอนาคต
+                  </p>
+                </article>
+
+                <!-- Interests card (mirrors design from reference layout) -->
+                <article class="cv-section-card">
+                  <header class="cv-section-card__title">
+                    <span class="cv-section-card__title-icon" aria-hidden="true">🌾</span>
+                    <h2>สิ่งที่สนใจ (Interests)</h2>
+                  </header>
+
+                  <div class="grid" style="gap: 0.75rem;">
+                    <div>
+                      <p class="cv-section-card__item-title">Smart Farm</p>
+                      <p class="cv-section-card__item-body text-soft">
+                        การประยุกต์ใช้เทคโนโลยีเพื่อการเกษตรสมัยใหม่
+                      </p>
+                    </div>
+
+                    <div>
+                      <p class="cv-section-card__item-title">Agri Engineering</p>
+                      <p class="cv-section-card__item-body text-soft">
+                        วิศวกรรมเพื่อการเกษตรและระบบชลประทาน
+                      </p>
+                    </div>
+
+                    <div>
+                      <p class="cv-section-card__item-title">IoT</p>
+                      <p class="cv-section-card__item-body text-soft">
+                        เซ็นเซอร์และอุปกรณ์ IoT เพื่อใช้ติดตามสภาพแวดล้อมฟาร์ม
+                      </p>
+                    </div>
+
+                    <div>
+                      <p class="cv-section-card__item-title">Sustainability</p>
+                      <p class="cv-section-card__item-body text-soft">
+                        การออกแบบฟาร์มที่ยั่งยืน เป็นมิตรต่อสิ่งแวดล้อม
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </section>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Shared footer -->
+      <footer class="site-footer">
+        <div class="container site-footer__inner">
+          <p>
+            Made with <span class="site-footer__heart" aria-hidden="true">❤</span>
+            by Ghim &amp; Tonkla
+          </p>
+          <p class="text-soft">Together since July 26, 2022</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
