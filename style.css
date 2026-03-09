@@ -542,9 +542,9 @@ ul, ol {
 
 .cv-section-card {
   padding: 1.4rem 1.5rem;
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-soft);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.16);
 }
 
 .cv-section-card__title {
@@ -581,6 +581,7 @@ ul, ol {
 .cv-section-card__item-body {
   margin-top: 0.5rem;
   font-size: var(--font-size-sm);
+  line-height: 1.8;
 }
 
 @media (min-width: 768px) {
@@ -589,6 +590,89 @@ ul, ol {
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
     align-items: flex-start;
   }
+}
+
+/* CV layout helpers */
+.cv-layout__sidebar {
+  margin-bottom: 1.75rem;
+  display: flex;
+  justify-content: center;
+}
+
+.cv-profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(145deg, #ffeaf5, #fdf9ff);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.profile-img-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #f9a8d4;
+  box-shadow: 0 18px 38px rgba(249, 168, 212, 0.5);
+  margin: 0 auto 0.9rem;
+}
+
+.cv-profile-card__name {
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+}
+
+.cv-profile-card__role {
+  margin-top: 0.15rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-soft);
+}
+
+.cv-profile-card__meta {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.cv-profile-card__meta dt {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-soft);
+}
+
+.cv-profile-card__meta dd {
+  font-size: var(--font-size-sm);
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  justify-content: center;
+}
+
+.tag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  box-shadow: var(--shadow-subtle);
+  transition: transform 160ms ease-out, box-shadow 160ms ease-out;
+}
+
+.tag--blue {
+  background: var(--color-primary-soft);
+  color: var(--color-text);
+}
+
+.tag--pink {
+  background: var(--color-secondary-soft);
+  color: var(--color-text);
+}
+
+.tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.18);
 }
 
 /* ---- 4.7 Timeline layout (memories page) ---- */
