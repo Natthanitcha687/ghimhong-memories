@@ -396,43 +396,46 @@
         }
 
         // Check the board state after a drop.
-        // 1. If not all 9 cells are filled, simply hide any success message.
-        // 2. If all 9 are filled, check if each piece is in the correct cell.
-        //    - If all correct  -> show success text + "completed" popup.
-        //    - If some wrong   -> hide success text + "try again" popup.
+        // 1. นับจำนวนชิ้นส่วนบนกระดานให้ครบ 9 ชิ้นก่อนจึงค่อยแจ้งเตือน
+        // 2. ถ้าครบ 9 ชิ้นแล้ว ตรวจว่าตำแหน่งถูกทั้งหมดหรือไม่
+        //    - ถูกทุกชิ้น  -> แสดงข้อความสำเร็จ
+        //    - มีผิดแม้แต่ชิ้นเดียว -> แสดงข้อความให้ลองสลับใหม่
         function checkCompletion() {
           var cells = board.querySelectorAll('.jigsaw-cell');
-          var allFilled = true;
+          var filledCount = 0;
           var allCorrect = true;
 
-          cells.forEach(function (cell) {
+          for (var i = 0; i < cells.length; i++) {
+            var cell = cells[i];
             var expectedId = cell.getAttribute('data-cell-id');
             var piece = cell.firstElementChild;
 
             if (!piece) {
-              allFilled = false;
-              allCorrect = false;
-              return;
+              continue;
             }
+
+            filledCount++;
 
             var pieceId = piece.getAttribute('data-piece-id');
             if (pieceId !== expectedId) {
               allCorrect = false;
             }
-          });
+          }
 
           if (!successMessage) return;
 
-          // If the board is not yet fully filled, keep things quiet
-          if (!allFilled) {
+          // ยังวางไม่ครบ 9 ชิ้น -> ไม่ต้องขึ้น Modal ใด ๆ
+          if (filledCount !== PIECE_COUNT) {
             successMessage.classList.add('hidden');
             return;
           }
 
+          // วางครบแล้ว และถูกทุกตำแหน่ง
           if (allCorrect) {
             successMessage.classList.remove('hidden');
             openModal('เย้! ต่อรูปความทรงจำของเราสมบูรณ์แล้ว! 💖');
           } else {
+            // วางครบ 9 ชิ้นแล้ว แต่ยังมีชิ้นที่ผิดตำแหน่ง
             successMessage.classList.add('hidden');
             openModal('อ๊ะๆ ยังต่อไม่ถูกน้า ลองสลับตำแหน่งดูใหม่นะ! 🥺');
           }
