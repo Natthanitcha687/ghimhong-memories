@@ -303,28 +303,28 @@ ul, ol {
   margin: 2px 0;
 }
 
-  /* ซ่อนเมนูไว้ก่อนตอนปกติ */
-  .navbar__links {
-    display: none !important; /* ต้องซ่อนให้สนิท ห้ามมากินพื้นที่ใน Navbar */
-    width: 100%;
-  }
-  border-radius: var(--radius-pill);
+/* Base menu link styling */
+.navbar__link {
+  position: relative;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
   color: var(--color-text-soft);
-  transition: background-color var(--transition-fast),
-              color var(--transition-fast),
-              box-shadow var(--transition-fast);
+  transition: all 0.3s ease;
 }
 
-.navbar__link:hover {
-  background-color: rgba(255, 255, 255, 0.95);
-  color: var(--color-text);
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-}
-
+/* Active page pill (by class or aria-current) */
+.navbar__links a[aria-current="page"],
 .navbar__link--active {
-  background: linear-gradient(135deg, #6da8ff, #5b8df5);
-  color: #ffffff;
-  box-shadow: var(--shadow-soft);
+  background: linear-gradient(135deg, #7b8fed, #a2a8f0);
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(123, 143, 237, 0.4);
+}
+
+/* Hover effect for non-active links */
+.navbar__links a:hover:not([aria-current="page"]) {
+  background: rgba(123, 143, 237, 0.1);
+  color: var(--color-text);
 }
 
 /* Mobile nav: stack links if needed */
@@ -827,6 +827,11 @@ ul, ol {
     margin-inline: auto;
   }
 
+  /* ให้ header เป็นจุดอ้างอิงของเมนูที่ตกลงมา */
+  .site-header {
+    position: relative !important;
+  }
+
   /* Header/Navbar overrides on mobile - force full-width with !important */
   .site-header {
     padding: 0 !important;
@@ -865,23 +870,36 @@ ul, ol {
     z-index: 100 !important; /* keep above overlapping elements */
   }
 
-  /* เมื่อกดปุ่มแล้วมีคลาส is-open โผล่มา ให้แสดงเมนู */
+  /* เมื่อกดปุ่มแล้วมีคลาส is-open โผล่มา ให้แสดงเมนูแบบเต็มจอด้านล่าง header */
   .navbar__links.is-open {
     display: flex !important;
     flex-direction: column !important;
     position: absolute !important;
-    top: 100% !important; /* หล่นลงมาใต้ Navbar พอดี */
+    top: 100% !important; /* หล่นมาใต้ Navbar พอดีเป๊ะ */
     left: 0 !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
-    box-shadow: 0 10px 15px rgba(0,0,0,0.05) !important;
-    padding: 1.5rem 0 !important;
+    width: 100% !important; /* กางเต็มหน้าจอมือถือ */
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(15px) !important;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.1) !important;
+    padding: 2rem 0 !important;
+    align-items: center !important; /* จัดปุ่มให้อยู่กึ่งกลาง */
     z-index: 99 !important;
+    border-radius: 0 0 20px 20px !important; /* มุมโค้งด้านล่างเพิ่มความละมุน */
   }
 
-  /* จัดเรียงปุ่มด้านในให้สวยงาม */
+  /* เพิ่มระยะห่างระหว่างแต่ละปุ่มในเมนูที่เปิดออก */
   .navbar__links.is-open li {
-    margin: 0.5rem 0 !important;
+    margin: 0.8rem 0 !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* ปรับขนาดปุ่มแคปซูลให้จิ้มง่ายขึ้นบนมือถือ */
+  .navbar__links.is-open a {
+    display: inline-block !important;
+    width: 60% !important; /* ให้แคปซูลกว้างสวยงาม */
+    padding: 0.8rem 1rem !important;
+    font-size: 1.1rem !important;
   }
 }
 
