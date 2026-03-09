@@ -17,13 +17,9 @@
     <!-- Google Fonts: Sarabun (primary Thai font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-              <li>
-                <a href="ghim-cv.html" class="navbar__link navbar__link--active" aria-current="page">Ghim's CV</a>
-              </li>
-              <li>
-                <a href="jigsaw-game.html" class="navbar__link">Jigsaw Game</a>
-              </li>
-    <link rel="stylesheet" href="./style.css" />
+
+    <!-- Shared stylesheet -->
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!--
@@ -34,7 +30,7 @@
       <!--
         Shared site header and navigation
         - Same structure as index.html
-        - Active state moved to "Ghim's CV" for this page
+        - Active state set to "Ghim's CV" for this page
       -->
       <header class="site-header">
         <div class="container navbar" role="navigation" aria-label="Main navigation">
@@ -78,7 +74,7 @@
         - On mobile, columns stack vertically (mobile‑first)
       -->
       <main class="main" id="main-content">
-        <section class="section">
+        <section class="section" aria-labelledby="ghim-cv-heading">
           <div class="container">
             <!-- Page heading for screen readers and users -->
             <header class="section-heading text-center">
@@ -86,7 +82,7 @@
                 <span aria-hidden="true">👩‍💻</span>
                 <span>Curriculum Vitae</span>
               </p>
-              <h1 class="section-heading__title">Ghimhong / Ghim</h1>
+              <h1 id="ghim-cv-heading" class="section-heading__title">Ghimhong / Ghim</h1>
               <p class="section-heading__subtitle">
                 นางสาวณัฏฐณิชชา กิติชยาโชติ – นักศึกษาครุศาสตร์วิศวกรรมคอมพิวเตอร์ปีที่ 3
                 ที่รักการสอน รักการเรียนรู้ และรักการวิ่ง
@@ -96,7 +92,7 @@
             <!--
               CV layout wrapper
               - Sidebar (profile) on the left
-              - Detail sections (education, experience, hobbies) on the right
+              - Detail sections (education, hobbies) on the right
             -->
             <div class="cv-layout" aria-label="Ghimhong profile layout">
               <!--
@@ -104,13 +100,11 @@
                 - Profile image and key personal information
               -->
               <aside class="cv-layout__sidebar" aria-label="Basic profile information">
-                <!-- Main profile card -->
-                <article class="cv-profile-card">
-                  <!-- Profile image (placeholder pastel) -->
+                <article class="cv-section-card cv-profile-card">
                   <figure class="text-center">
                     <img
                       src="https://via.placeholder.com/160x160/DEE9FF/ffffff?text=G"
-                      alt="Ghimhong Profile Picture"
+                      alt="รูปโปรไฟล์ชั่วคราวของ Ghimhong"
                       width="160"
                       height="160"
                       style="border-radius: 999px; margin: 0 auto 0.9rem; display: block;"
@@ -134,7 +128,7 @@
                     </div>
                     <div>
                       <dt class="text-soft">วันเกิด</dt>
-                      <dd>วันศุกร์ที่ 26 กันยายน 2546</dd>
+                      <dd>26 กันยายน 2546</dd>
                     </div>
                     <div>
                       <dt class="text-soft">สถานะ</dt>
@@ -157,7 +151,6 @@
               <!--
                 Right column: detailed CV sections
                 - Education
-                - Experience
                 - Hobbies / passions
               -->
               <section class="cv-layout__main" aria-label="Detailed CV sections">
@@ -175,40 +168,6 @@
                     <p class="cv-section-card__item-meta">
                       สาขาครุศาสตร์วิศวกรรม แขนงคอมพิวเตอร์ –
                       สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง (สจล.)
-                    </p>
-                  </div>
-                </article>
-
-                <!-- Experience card -->
-                <article class="cv-section-card">
-                  <header class="cv-section-card__title">
-                    <span class="cv-section-card__title-icon" aria-hidden="true">💼</span>
-                    <h2>ประสบการณ์ (Experience)</h2>
-                  </header>
-
-                  <!-- Experience item 1: Teaching Assistant -->
-                  <div class="mt-sm">
-                    <p class="cv-section-card__item-title">
-                      ผู้ช่วยสอน (Teaching Assistant) – รายวิชา Office Programs
-                      (Spreadsheet Program)
-                    </p>
-                    <p class="cv-section-card__item-body">
-                      ช่วยเตรียมเนื้อหาและดูแลการสอนในห้องเรียน
-                      รวมถึงให้คำปรึกษานักศึกษาด้านการใช้งานโปรแกรม Spreadsheet
-                      เพื่อสร้างความเข้าใจทั้งภาคทฤษฎีและภาคปฏิบัติ
-                    </p>
-                  </div>
-
-                  <!-- Experience item 2: Business Model Canvas project -->
-                  <div class="mt-md">
-                    <p class="cv-section-card__item-title">
-                      โปรเจกต์ Business Model Canvas – Thai President Foods Public
-                      Company Limited (TFMAMA)
-                    </p>
-                    <p class="cv-section-card__item-body">
-                      ร่วมวิเคราะห์และออกแบบ Business Model Canvas ให้กับแบรนด์ภายใต้
-                      บริษัท ไทยเพรซิเดนท์ฟูดส์ จำกัด (มหาชน) (TFMAMA)
-                      เพื่อนำเสนอแนวทางการพัฒนาธุรกิจและคุณค่าให้กับลูกค้า
                     </p>
                   </div>
                 </article>

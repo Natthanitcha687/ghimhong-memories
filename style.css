@@ -585,6 +585,7 @@ ul, ol {
 
 @media (min-width: 768px) {
   .cv-layout {
+    display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
     align-items: flex-start;
   }
