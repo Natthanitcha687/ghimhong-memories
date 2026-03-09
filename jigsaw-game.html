@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <!--
+      Head section for Jigsaw Game page
+      - Reuses shared font and stylesheet
+      - Keeps responsive viewport for mobile‑first design
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jigsaw Game | Ghim &amp; Tonkla - Personal Website</title>
+    <meta
+      name="description"
+      content="A little pastel jigsaw heart game for Ghim &amp; Tonkla."
+    />
+
+    <!-- Google Fonts: Sarabun (primary Thai font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Global pastel theme & layout utilities -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Page wrapper so footer sits at the bottom while keeping content readable without CSS -->
+    <div class="page-wrapper">
+      <!--
+        Shared site header and navigation
+        - Structure matches other pages
+        - Active state set on "Jigsaw Game"
+      -->
+      <header class="site-header">
+        <div class="container navbar" role="navigation" aria-label="Main navigation">
+          <!-- Brand / logo area -->
+          <a href="index.html" class="navbar__brand">
+            <span class="navbar__brand-icon" aria-hidden="true">❤</span>
+            <span>G &amp; T</span>
+          </a>
+
+          <!-- Primary navigation links -->
+          <nav aria-label="Primary">
+            <ul class="navbar__links">
+              <li>
+                <a href="index.html" class="navbar__link">Home</a>
+              </li>
+              <li>
+                <a href="ghim-cv.html" class="navbar__link">Ghim's CV</a>
+              </li>
+              <li>
+                <a
+                  href="jigsaw-game.html"
+                  class="navbar__link navbar__link--active"
+                  aria-current="page"
+                  >Jigsaw Game</a
+                >
+              </li>
+              <li>
+                <a href="memories.html" class="navbar__link">Our Memories</a>
+              </li>
+              <li>
+                <a href="anniversary.html" class="navbar__link">Anniversary</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!--
+        Main content area
+        - 2-column responsive layout using Flexbox
+        - Left: shuffled pieces container
+        - Right: 3x3 puzzle grid board
+      -->
+      <main class="main" id="main-content">
+        <section class="section" aria-labelledby="jigsaw-heading">
+          <div class="container">
+            <!-- Page heading + subtitle -->
+            <header class="section-heading">
+              <p class="section-heading__eyebrow">
+                <span aria-hidden="true">💖</span>
+                <span>Little pastel mini-game</span>
+              </p>
+              <h1 id="jigsaw-heading" class="section-heading__title">
+                Piece My Heart Together
+              </h1>
+              <p class="section-heading__subtitle">
+                เกมต่อจิ๊กซอว์หัวใจเล็ก ๆ ของเรา ลองลากชิ้นส่วนไปวางให้ถูกตำแหน่งดูนะ 💗
+              </p>
+            </header>
+
+            <!-- Progressive enhancement fallback when JavaScript is disabled -->
+            <p id="jigsaw-fallback" class="jigsaw-fallback">
+              โปรดเปิดใช้งาน JavaScript เพื่อเล่นเกมต่อจิ๊กซอว์หัวใจของเรา
+            </p>
+
+            <!-- Jigsaw layout: flexbox wrapper with two main panels -->
+            <div class="jigsaw-layout" aria-label="Jigsaw heart game layout">
+              <!-- Pieces container (source of draggable pieces) -->
+              <section
+                class="jigsaw-panel jigsaw-panel--pieces"
+                aria-label="กล่องเก็บชิ้นส่วนจิ๊กซอว์"
+              >
+                <header class="jigsaw-panel__header">
+                  <h2 class="jigsaw-panel__title">ชิ้นส่วนหัวใจ (Pieces)</h2>
+                  <p class="jigsaw-panel__subtitle">
+                    ลากชิ้นส่วนหัวใจจากกล่องนี้ไปวางบนกระดานทางขวาให้ถูกช่อง
+                  </p>
+                </header>
+
+                <div
+                  id="pieces-container"
+                  class="jigsaw-pieces"
+                  aria-label="Heart puzzle pieces to drag"
+                ></div>
+              </section>
+
+              <!-- Puzzle board (3x3 grid of drop targets) -->
+              <section
+                class="jigsaw-panel jigsaw-panel--board"
+                aria-label="กระดานเกมต่อจิ๊กซอว์หัวใจ"
+              >
+                <header class="jigsaw-panel__header">
+                  <h2 class="jigsaw-panel__title">กระดานหัวใจ (Puzzle Board)</h2>
+                  <p class="jigsaw-panel__subtitle">
+                    วางชิ้นส่วนหมายเลข 1-9 ให้ตรงกับช่อง 1-9 เพื่อประกอบหัวใจให้สมบูรณ์
+                  </p>
+                </header>
+
+                <div
+                  id="puzzle-board"
+                  class="jigsaw-board"
+                  role="grid"
+                  aria-label="3 by 3 heart puzzle board"
+                >
+                  <!--
+                    3x3 grid cells (drop zones)
+                    - Each cell expects a piece with the same number as data-cell-id
+                  -->
+                  <div class="jigsaw-cell" data-cell-id="1" role="gridcell" aria-label="ช่องที่ 1"></div>
+                  <div class="jigsaw-cell" data-cell-id="2" role="gridcell" aria-label="ช่องที่ 2"></div>
+                  <div class="jigsaw-cell" data-cell-id="3" role="gridcell" aria-label="ช่องที่ 3"></div>
+                  <div class="jigsaw-cell" data-cell-id="4" role="gridcell" aria-label="ช่องที่ 4"></div>
+                  <div class="jigsaw-cell" data-cell-id="5" role="gridcell" aria-label="ช่องที่ 5"></div>
+                  <div class="jigsaw-cell" data-cell-id="6" role="gridcell" aria-label="ช่องที่ 6"></div>
+                  <div class="jigsaw-cell" data-cell-id="7" role="gridcell" aria-label="ช่องที่ 7"></div>
+                  <div class="jigsaw-cell" data-cell-id="8" role="gridcell" aria-label="ช่องที่ 8"></div>
+                  <div class="jigsaw-cell" data-cell-id="9" role="gridcell" aria-label="ช่องที่ 9"></div>
+                </div>
+
+                <!-- Success message appears only when puzzle is correctly completed -->
+                <p
+                  id="jigsaw-success"
+                  class="jigsaw-success hidden"
+                  role="status"
+                  aria-live="polite"
+                >
+                  You complete me! 💖
+                </p>
+              </section>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Shared footer -->
+      <footer class="site-footer">
+        <div class="container site-footer__inner">
+          <p>
+            Made with <span class="site-footer__heart" aria-hidden="true">❤</span>
+            by Ghim &amp; Tonkla
+          </p>
+          <p class="text-soft">Together since July 26, 2022</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Jigsaw completion / hint modal (hidden by default, shown via JS) -->
+    <div
+      id="jigsaw-modal-backdrop"
+      class="modal-backdrop hidden"
+      aria-hidden="true"
+    >
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="jigsaw-modal-title"
+        aria-describedby="jigsaw-modal-message"
+      >
+        <div class="modal__icon" aria-hidden="true">💖</div>
+        <h2 id="jigsaw-modal-title" class="modal__title">Jigsaw Game</h2>
+        <p id="jigsaw-modal-message" class="modal__message"></p>
+        <div class="modal__actions">
+          <button type="button" id="jigsaw-modal-button" class="btn btn--primary">
+            ตกลง
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--
+      Jigsaw Game Logic (HTML5 Drag and Drop)
+      - Progressive enhancement: if JS is disabled, users will only see a message
+        explaining they need to enable JavaScript to play.
+      - When JS is enabled, we dynamically create 9 draggable pieces and
+        wire up drag & drop interactions between the pieces container and
+        the 3x3 puzzle board.
+    -->
+    <script>
+      (function () {
+        var piecesContainer = document.getElementById('pieces-container');
+        var board = document.getElementById('puzzle-board');
+        var successMessage = document.getElementById('jigsaw-success');
+        var fallbackMessage = document.getElementById('jigsaw-fallback');
+
+        // Modal elements for friendly messages instead of alert()
+        var modalBackdrop = document.getElementById('jigsaw-modal-backdrop');
+        var modalMessageEl = document.getElementById('jigsaw-modal-message');
+        var modalButton = document.getElementById('jigsaw-modal-button');
+
+        // Guard: if required DOM elements are missing for some reason, exit early
+        if (!piecesContainer || !board) {
+          return;
+        }
+
+        // Hide the fallback text now that JavaScript is confirmed to be running
+        if (fallbackMessage) {
+          fallbackMessage.classList.add('hidden');
+        }
+
+        var PIECE_COUNT = 9;
+
+        // Utility: simple Fisher-Yates shuffle for an array
+        function shuffle(array) {
+          for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+          }
+          return array;
+        }
+
+        // Create an array [1, 2, ... 9] and shuffle it
+        var ids = [];
+        for (var n = 1; n <= PIECE_COUNT; n++) {
+          ids.push(n);
+        }
+        shuffle(ids);
+
+        // Track where a piece is dragged from so we can support swapping
+        // pieces that are already on the board.
+        var dragSourceCell = null;
+
+        // Simple helpers to open/close the custom modal popup
+        function openModal(message) {
+          if (!modalBackdrop || !modalMessageEl) return;
+          modalMessageEl.textContent = message;
+          modalBackdrop.classList.remove('hidden');
+          modalBackdrop.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeModal() {
+          if (!modalBackdrop) return;
+          modalBackdrop.classList.add('hidden');
+          modalBackdrop.setAttribute('aria-hidden', 'true');
+        }
+
+        if (modalButton) {
+          modalButton.addEventListener('click', closeModal);
+        }
+
+        if (modalBackdrop) {
+          modalBackdrop.addEventListener('click', function (event) {
+            if (event.target === modalBackdrop) {
+              closeModal();
+            }
+          });
+        }
+
+        // ---- Drag and Drop handlers ----
+        // The HTML5 Drag and Drop API works with a DataTransfer object
+        // (e.dataTransfer) which travels with the drag operation.
+        // We store the id of the dragged piece as text data so that the
+        // drop target can look it up later and move the correct element.
+
+        function handleDragStart(event) {
+          var piece = event.currentTarget;
+
+          // Remember the original container (either the pieces tray or a board cell)
+          dragSourceCell = piece.parentElement || null;
+
+          // Only proceed if the dragged element has a piece id
+          var id = piece.getAttribute('data-piece-id');
+          if (!id || !event.dataTransfer) return;
+
+          // Set the drag data: type 'text/plain' is widely supported
+          event.dataTransfer.setData('text/plain', id);
+
+          // Indicate that we intend to move the piece, not copy it
+          event.dataTransfer.effectAllowed = 'move';
+        }
+
+        // Ensure cell visuals (dashed border vs seamless) match whether
+        // a piece is currently placed inside.
+        function updateCellFilledState(cell) {
+          if (!cell || !cell.classList || !cell.classList.contains('jigsaw-cell')) {
+            return;
+          }
+          if (cell.firstElementChild) {
+            cell.classList.add('jigsaw-cell--filled');
+          } else {
+            cell.classList.remove('jigsaw-cell--filled');
+          }
+        }
+
+        function handleDragOver(event) {
+          // By default, most elements do not allow drops.
+          // Calling preventDefault() inside dragover signals that this
+          // element is a valid drop target.
+          event.preventDefault();
+
+          if (event.dataTransfer) {
+            event.dataTransfer.dropEffect = 'move';
+          }
+        }
+
+        function handleDragEnter(event) {
+          // Visual feedback: highlight the cell the user is hovering over
+          var cell = event.currentTarget;
+          cell.classList.add('jigsaw-cell--over');
+        }
+
+        function clearDragOverState(event) {
+          var cell = event.currentTarget;
+          cell.classList.remove('jigsaw-cell--over');
+        }
+
+        function handleDrop(event) {
+          // Prevent browser from trying to open the dragged data as a link/file
+          event.preventDefault();
+
+          var cell = event.currentTarget;
+
+          if (!event.dataTransfer) {
+            clearDragOverState(event);
+            return;
+          }
+
+          // Retrieve the piece id that was stored in dragstart
+          var id = event.dataTransfer.getData('text/plain');
+          if (!id) {
+            clearDragOverState(event);
+            return;
+          }
+
+          // Find the actual piece element in the DOM using the id
+          var piece = board.ownerDocument.querySelector(
+            '.jigsaw-piece[data-piece-id="' + id + '"]'
+          );
+
+          if (!piece) {
+            clearDragOverState(event);
+            return;
+          }
+
+          var existing = cell.firstElementChild;
+
+          // If the target cell already has a piece and it's not the same one,
+          // we either swap the pieces between two board cells, or move the
+          // old piece back to the tray when dragging from the tray.
+          if (existing && existing !== piece) {
+            if (dragSourceCell && dragSourceCell !== piecesContainer) {
+              // Swap: move existing piece back to the original board cell
+              dragSourceCell.appendChild(existing);
+              updateCellFilledState(dragSourceCell);
+            } else {
+              // Original piece came from the tray: return existing to tray
+              piecesContainer.appendChild(existing);
+            }
+          }
+
+          // Append the dragged piece into this cell (the drop target)
+          cell.appendChild(piece);
+          updateCellFilledState(cell);
+
+          // Clean up the visual hover state
+          clearDragOverState(event);
+
+          // After each successful drop, evaluate whether the puzzle is complete
+          checkCompletion();
+        }
+
+        // Check the board state after a drop.
+        // 1. If not all 9 cells are filled, simply hide any success message.
+        // 2. If all 9 are filled, check if each piece is in the correct cell.
+        //    - If all correct  -> show success text + "completed" popup.
+        //    - If some wrong   -> hide success text + "try again" popup.
+        function checkCompletion() {
+          var cells = board.querySelectorAll('.jigsaw-cell');
+          var allFilled = true;
+          var allCorrect = true;
+
+          cells.forEach(function (cell) {
+            var expectedId = cell.getAttribute('data-cell-id');
+            var piece = cell.firstElementChild;
+
+            if (!piece) {
+              allFilled = false;
+              allCorrect = false;
+              return;
+            }
+
+            var pieceId = piece.getAttribute('data-piece-id');
+            if (pieceId !== expectedId) {
+              allCorrect = false;
+            }
+          });
+
+          if (!successMessage) return;
+
+          // If the board is not yet fully filled, keep things quiet
+          if (!allFilled) {
+            successMessage.classList.add('hidden');
+            return;
+          }
+
+          if (allCorrect) {
+            successMessage.classList.remove('hidden');
+            openModal('เย้! ต่อรูปความทรงจำของเราสมบูรณ์แล้ว! 💖');
+          } else {
+            successMessage.classList.add('hidden');
+            openModal('อ๊ะๆ ยังต่อไม่ถูกน้า ลองสลับตำแหน่งดูใหม่นะ! 🥺');
+          }
+        }
+
+        // ---- Initialize pieces and wire up events ----
+
+        // Create 9 jigsaw sprite pieces dynamically to keep the markup clean.
+        ids.forEach(function (id) {
+          var piece = document.createElement('div');
+          // Base class + modifier class used for sprite slice selection
+          piece.className = 'jigsaw-piece jigsaw-piece--' + id;
+          piece.setAttribute('draggable', 'true');
+          piece.setAttribute('data-piece-id', String(id));
+          piece.setAttribute('aria-label', 'ชิ้นส่วนหัวใจหมายเลข ' + id);
+
+          piece.addEventListener('dragstart', handleDragStart);
+
+          piecesContainer.appendChild(piece);
+        });
+
+        // Attach drag target handlers to each grid cell on the board
+        var cells = board.querySelectorAll('.jigsaw-cell');
+        cells.forEach(function (cell) {
+          cell.addEventListener('dragover', handleDragOver);
+          cell.addEventListener('dragenter', handleDragEnter);
+          cell.addEventListener('dragleave', clearDragOverState);
+          cell.addEventListener('drop', handleDrop);
+        });
+      })();
+    </script>
+  </body>
+</html>

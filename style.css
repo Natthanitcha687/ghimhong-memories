@@ -856,3 +856,154 @@ body.js .fade-in-up.is-visible {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* ==========================
+   6. Jigsaw Game Layout
+   ========================== */
+
+.jigsaw-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .jigsaw-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.jigsaw-panel {
+  flex: 1 1 0;
+  padding: 1.6rem 1.5rem;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.jigsaw-panel--pieces {
+  background: linear-gradient(145deg, var(--color-secondary-soft), #ffffff);
+}
+
+.jigsaw-panel--board {
+  background: linear-gradient(145deg, var(--color-primary-soft), #ffffff);
+}
+
+.jigsaw-panel__header {
+  margin-bottom: 1.1rem;
+}
+
+.jigsaw-panel__title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+.jigsaw-panel__subtitle {
+  margin-top: 0.3rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-soft);
+}
+
+.jigsaw-pieces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  min-height: 170px;
+  align-content: flex-start;
+}
+
+.jigsaw-piece {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  border: 1px dashed rgba(148, 163, 184, 0.6);
+  background-image: url('images/jigsaw.jpg');
+  /* 3x3 sprite so scale entire image to 3x3 pieces */
+  background-size: 300% 300%;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  box-shadow: var(--shadow-subtle);
+}
+
+.jigsaw-piece:active {
+  cursor: grabbing;
+}
+
+/* Individual sprite slices (3 columns x 3 rows) */
+.jigsaw-piece--1 { background-position: left top; }
+.jigsaw-piece--2 { background-position: center top; }
+.jigsaw-piece--3 { background-position: right top; }
+.jigsaw-piece--4 { background-position: left center; }
+.jigsaw-piece--5 { background-position: center center; }
+.jigsaw-piece--6 { background-position: right center; }
+.jigsaw-piece--7 { background-position: left bottom; }
+.jigsaw-piece--8 { background-position: center bottom; }
+.jigsaw-piece--9 { background-position: right bottom; }
+
+.jigsaw-board {
+  margin-top: 0.4rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  max-width: 320px;
+  margin-inline: auto;
+}
+
+.jigsaw-cell {
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 2px dashed #ffb6c1;
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  overflow: hidden;
+  transition: background-color var(--transition-fast),
+              border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.jigsaw-cell--over {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-subtle);
+}
+
+/* When a cell already has a piece, hide its border/background so all 9
+   slices join seamlessly into one image. */
+.jigsaw-cell--filled {
+  border: none;
+  background: none;
+  border-radius: 0;
+}
+
+/* When a piece is placed on the board, let it fill the cell and remove rounding/border
+   so that all 9 slices join seamlessly into one image. */
+.jigsaw-board .jigsaw-piece {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  border: none;
+  background-size: 300% 300%;
+}
+
+.jigsaw-success {
+  margin-top: 1.6rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  color: var(--color-secondary);
+}
+
+.jigsaw-fallback {
+  margin-bottom: 1.4rem;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-soft);
+}
