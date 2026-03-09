@@ -590,7 +590,7 @@ ul, ol {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
     align-items: flex-start;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 }
 
@@ -606,8 +606,18 @@ ul, ol {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: linear-gradient(145deg, #ffeaf5, #fdf9ff);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.7);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.cv-profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
 }
 
 .profile-img-circle {
@@ -615,8 +625,8 @@ ul, ol {
   height: 180px;
   border-radius: 50%;
   object-fit: cover;
-  border: 5px solid #f9a8d4;
-  box-shadow: 0 18px 38px rgba(249, 168, 212, 0.5);
+  border: 6px solid #ffffff;
+  box-shadow: 0 0 25px rgba(255, 182, 193, 0.7);
   margin: 0 auto 0.9rem;
 }
 
@@ -625,8 +635,16 @@ ul, ol {
   font-size: var(--font-size-lg);
 }
 
-.cv-profile-card__role {
+.cv-profile-card__name-en {
   margin-top: 0.15rem;
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #6b4f7a;
+}
+
+.cv-profile-card__role {
+  margin-top: 0.35rem;
   font-size: var(--font-size-sm);
   color: var(--color-text-soft);
 }
@@ -675,6 +693,29 @@ ul, ol {
 .tag:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 28px rgba(15, 23, 42, 0.18);
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  margin-bottom: 1.5rem;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+.info-card .cv-section-card {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  margin-bottom: 0;
 }
 
 /* ---- 4.7 Timeline layout (memories page) ---- */
