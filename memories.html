@@ -70,7 +70,7 @@
 
       <!--
         Main content area
-        - Vertical timeline of memories with alternating cards
+        - Polaroid style memory gallery using CSS Grid
       -->
       <main class="main" id="main-content">
         <section class="section" aria-labelledby="memories-heading">
@@ -78,95 +78,145 @@
             <!-- Page heading + subtitle -->
             <header class="section-heading">
               <p class="section-heading__eyebrow">
-                <span aria-hidden="true">📖</span>
-                <span>เรื่องราวความทรงจำของเรา</span>
+                <span aria-hidden="true">📸</span>
+                <span>Polaroid Memory Gallery</span>
               </p>
               <h1 id="memories-heading" class="section-heading__title">
                 Our Memories
               </h1>
               <p class="section-heading__subtitle">
-                เรื่องราวจากวันแรกที่บังเอิญได้พบกัน จนถึงวันที่จับมือกันเริ่มต้นใหม่
+                เก็บช่วงเวลาน่ารัก ๆ ของเราผ่านรูปโพลารอยด์ใบเล็ก ๆ แทนคำพูดยาว ๆ
               </p>
             </header>
 
             <!--
-              Timeline wrapper
-              - Center line is drawn with ::before in CSS
-              - Each item is an <article> so screen readers see separate events
+              Polaroid gallery
+              - Uses CSS Grid for responsive layout
+              - Each memory is an <article> for semantic grouping
             -->
-            <div class="timeline" aria-label="Timeline of our memories">
-              <!-- Timeline item 1 -->
-              <article class="timeline-item">
-                <div class="timeline-item__dot" aria-hidden="true"></div>
-                <div class="timeline-item__card fade-in-up" data-timeline-observe>
-                  <p class="timeline-item__label">จุดเริ่มต้น</p>
-                  <h2 class="timeline-item__title">เฟรชชี่ ม.นเรศวร</h2>
-                  <p class="timeline-item__body">
-                    บังเอิญได้เรียนเซคเดียวกันตอนปี 1 ที่มหาวิทยาลัยนเรศวร ตอนนั้นยังไม่ได้คุยกันมาก
-                    แต่จำได้ว่าเลิกคลาสแล้วกิมหันไปบ๊ายบายต้นกล้าก่อนกลับหอทุกครั้ง
-                  </p>
-                </div>
+            <div
+              class="polaroid-grid"
+              aria-label="Polaroid gallery of our memories"
+            >
+              <!-- Card 1 -->
+              <article class="polaroid-card polaroid-card--tilt-left fade-in-up" data-memory-observe>
+                <figure class="polaroid-card__frame">
+                  <img
+                    src="images/memory-1.jpg"
+                    alt="ดูคอนเสิร์ต Cocktail"
+                    class="polaroid-card__image"
+                    loading="lazy"
+                  />
+                  <figcaption class="polaroid-card__caption">
+                    คอนเสิร์ต Cocktail 🎵 ร้องเพลงโปรดไปด้วยกันสุดเสียง
+                  </figcaption>
+                </figure>
               </article>
 
-              <!-- Timeline item 2 -->
-              <article class="timeline-item">
-                <div class="timeline-item__dot" aria-hidden="true"></div>
-                <div class="timeline-item__card fade-in-up" data-timeline-observe>
-                  <p class="timeline-item__label">ทักปุ๊บ สปาร์กปั๊บ</p>
-                  <h2 class="timeline-item__title">ทักปุ๊บ สปาร์กปั๊บ</h2>
-                  <p class="timeline-item__body">
-                    เจอกันอีกครั้งตอนเรียนเซครวม คราวนี้ต้นกล้าเป็นฝ่ายเข้ามาทักก่อน
-                    ส่วนกิมก็เนียน ๆ ไปขอไอจีจากเพื่อนแล้วทักไปคุยต่อในแชต
-                    จากเพื่อนร่วมคลาสเริ่มกลายเป็นคนที่อยากคุยด้วยทุกวัน
-                  </p>
-                </div>
+              <!-- Card 2 -->
+              <article class="polaroid-card polaroid-card--tilt-right fade-in-up" data-memory-observe>
+                <figure class="polaroid-card__frame">
+                  <img
+                    src="images/memory-2.jpg"
+                    alt="เที่ยวคริสต์มาส"
+                    class="polaroid-card__image"
+                    loading="lazy"
+                  />
+                  <figcaption class="polaroid-card__caption">
+                    เทศกาลคริสต์มาส 🎄 เดินดูไฟและบรรยากาศดีๆ ด้วยกัน
+                  </figcaption>
+                </figure>
               </article>
 
-              <!-- Timeline item 3 -->
-              <article class="timeline-item">
-                <div class="timeline-item__dot" aria-hidden="true"></div>
-                <div class="timeline-item__card fade-in-up" data-timeline-observe>
-                  <p class="timeline-item__label">เดตแรก &amp; วันครบรอบ</p>
-                  <h2 class="timeline-item__title">เดตแรก &amp; วันครบรอบ</h2>
-                  <p class="timeline-item__body">
-                    เริ่มชวนกันไปดูหนัง ไปเดินเล่น ไปเที่ยวด้วยกันบ่อยขึ้นเรื่อย ๆ
-                    จนสุดท้ายก็ตกลงเป็นแฟนกัน และกำหนดวันนั้นให้เป็นวันครบรอบของเรา
-                  </p>
-                </div>
+              <!-- Card 3 -->
+              <article class="polaroid-card polaroid-card--tilt-left fade-in-up" data-memory-observe>
+                <figure class="polaroid-card__frame">
+                  <img
+                    src="images/memory-3.jpg"
+                    alt="ออกกำลังกายด้วยกัน"
+                    class="polaroid-card__image"
+                    loading="lazy"
+                  />
+                  <figcaption class="polaroid-card__caption">
+                    วันไปออกกำลังกาย 🏃‍♀️🏃‍♂️ เหนื่อยแค่ไหนก็มีคนข้างๆ
+                  </figcaption>
+                </figure>
               </article>
 
-              <!-- Timeline item 4 -->
-              <article class="timeline-item">
-                <div class="timeline-item__dot" aria-hidden="true"></div>
-                <div class="timeline-item__card fade-in-up" data-timeline-observe>
-                  <p class="timeline-item__label">จับมือกันซิ่ว</p>
-                  <h2 class="timeline-item__title">จับมือกันซิ่ว</h2>
-                  <p class="timeline-item__body">
-                    เมื่อจบเทอม 1 ทั้งคู่ตัดสินใจจะซิ่วออกจากมหาวิทยาลัยเดิม
-                    เลยจับมือกันตั้งใจอ่านหนังสือ เตรียมสอบ และเรียนให้จบปี 1 เทอม 2
-                    เพื่อเดินต่อไปยังเส้นทางใหม่ด้วยกัน
-                  </p>
-                </div>
+              <!-- Card 4 -->
+              <article class="polaroid-card polaroid-card--tilt-right fade-in-up" data-memory-observe>
+                <figure class="polaroid-card__frame">
+                  <img
+                    src="images/memory-4.jpg"
+                    alt="เที่ยวทะเล"
+                    class="polaroid-card__image"
+                    loading="lazy"
+                  />
+                  <figcaption class="polaroid-card__caption">
+                    ทริปเที่ยวทะเล 🌊 ฟังเสียงคลื่นและเสียงหัวใจ
+                  </figcaption>
+                </figure>
               </article>
 
-              <!-- Timeline item 5 -->
-              <article class="timeline-item">
-                <div class="timeline-item__dot" aria-hidden="true"></div>
-                <div class="timeline-item__card fade-in-up" data-timeline-observe>
-                  <p class="timeline-item__label">เริ่มต้นใหม่</p>
-                  <h2 class="timeline-item__title">เริ่มต้นใหม่ที่ สจล.</h2>
-                  <p class="timeline-item__body">
-                    จับมือกันย้ายมาเป็นเด็กพระจอมเกล้าลาดกระบัง หาคอนโดอยู่ใกล้ ๆ มหาวิทยาลัยด้วยกัน
-                    เลิกเรียนก็กลับมาเจอกัน ชวนกันไปวิ่ง ออกกำลังกาย และทำกิจกรรมที่ชอบ
-                    เป็นช่วงเวลาที่รู้สึกว่ามีความสุขและเติมเต็มที่สุด
-                  </p>
-                </div>
+              <!-- Card 5 -->
+              <article class="polaroid-card polaroid-card--tilt-left fade-in-up" data-memory-observe>
+                <figure class="polaroid-card__frame">
+                  <img
+                    src="images/memory-5.jpg"
+                    alt="นั่งรถทัวร์กลับบ้าน"
+                    class="polaroid-card__image"
+                    loading="lazy"
+                  />
+                  <figcaption class="polaroid-card__caption">
+                    นั่งรถทัวร์กลับบ้าน 🚌 หลับซบไหล่กันไปตลอดทาง
+                  </figcaption>
+                </figure>
               </article>
 
-              <!-- Closing note at the end of the timeline -->
-              <div class="text-center mt-md">
-                <p class="text-soft">...and our story continues</p>
-              </div>
+              <!-- Card 6 -->
+              <article class="polaroid-card polaroid-card--tilt-right fade-in-up" data-memory-observe>
+                <figure class="polaroid-card__frame">
+                  <img
+                    src="images/memory-6.jpg"
+                    alt="ปั่นเรือเป็ด"
+                    class="polaroid-card__image"
+                    loading="lazy"
+                  />
+                  <figcaption class="polaroid-card__caption">
+                    ปั่นเรือเป็ดด้วยกัน 🦆 ชมวิวชิลๆ (แต่เมื่อยขามาก!)
+                  </figcaption>
+                </figure>
+              </article>
+
+              <!-- Card 7 -->
+              <article class="polaroid-card polaroid-card--tilt-left fade-in-up" data-memory-observe>
+                <figure class="polaroid-card__frame">
+                  <img
+                    src="images/memory-7.jpg"
+                    alt="คอนเสิร์ต Yented"
+                    class="polaroid-card__image"
+                    loading="lazy"
+                  />
+                  <figcaption class="polaroid-card__caption">
+                    คอนเสิร์ตวงโปรด Yented 🎸 ฟังเพลงที่ชอบกับคนที่ใช่
+                  </figcaption>
+                </figure>
+              </article>
+
+              <!-- Card 8 -->
+              <article class="polaroid-card polaroid-card--tilt-right fade-in-up" data-memory-observe>
+                <figure class="polaroid-card__frame">
+                  <img
+                    src="images/memory-8.jpg"
+                    alt="รอคิวตี๋น้อย"
+                    class="polaroid-card__image"
+                    loading="lazy"
+                  />
+                  <figcaption class="polaroid-card__caption">
+                    รอคิวสุกี้ตี๋น้อย 🍲 หิวแค่ไหนก็ทนได้ถ้ากินกับเธอ
+                  </figcaption>
+                </figure>
+              </article>
             </div>
           </div>
         </section>
@@ -200,8 +250,8 @@
         // Mark that JavaScript is active so CSS can safely hide .fade-in-up
         document.body.classList.add('js');
 
-        // Select all timeline cards that should animate on scroll
-        var cards = document.querySelectorAll('[data-timeline-observe]');
+        // Select all memory cards that should animate on scroll
+        var cards = document.querySelectorAll('[data-memory-observe]');
         if (!cards.length) return;
 
         // Create an observer with a slightly earlier trigger (0.15 of the card in view)
