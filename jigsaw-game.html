@@ -450,6 +450,7 @@
           piece.className = 'jigsaw-piece jigsaw-piece--' + id;
           piece.setAttribute('draggable', 'true');
           piece.setAttribute('data-piece-id', String(id));
+          // ARIA label so screen readers can announce each piece clearly
           piece.setAttribute('aria-label', 'ชิ้นส่วนหัวใจหมายเลข ' + id);
 
           piece.addEventListener('dragstart', handleDragStart);
@@ -460,6 +461,13 @@
         // Attach drag target handlers to each grid cell on the board
         var cells = board.querySelectorAll('.jigsaw-cell');
         cells.forEach(function (cell) {
+          var cellId = cell.getAttribute('data-cell-id');
+          // Reinforce ARIA metadata for assistive technologies
+          cell.setAttribute('role', 'gridcell');
+          if (cellId) {
+            cell.setAttribute('aria-label', 'ช่องที่ ' + cellId);
+          }
+
           cell.addEventListener('dragover', handleDragOver);
           cell.addEventListener('dragenter', handleDragEnter);
           cell.addEventListener('dragleave', clearDragOverState);

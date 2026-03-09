@@ -22,7 +22,7 @@
 
   --color-accent: #7dd3fc; /* light cyan accent */
   --color-text: #1f2933; /* dark slate */
-  --color-text-soft: #6b7280; /* muted */
+  --color-text-soft: #4a4a4a; /* muted but higher contrast */
   --color-border-subtle: rgba(148, 163, 184, 0.28);
 
   --gradient-hero: radial-gradient(circle at top left, #e0f2ff 0, transparent 55%),
@@ -319,6 +319,7 @@ ul, ol {
   font-weight: 600;
   border: 1px solid transparent;
   cursor: pointer;
+  min-height: 48px; /* Comfortable touch target on mobile */
   transition: transform var(--transition-med),
               box-shadow var(--transition-med),
               background-color var(--transition-med),
@@ -754,6 +755,51 @@ ul, ol {
   margin-bottom: 0;
 }
 
+/* ==========================
+   Mobile-specific refinements
+   ========================== */
+@media (max-width: 768px) {
+  /* Relaxed horizontal padding & vertical rhythm on small screens */
+  .container {
+    padding-inline: 1.5rem;
+  }
+
+  .section {
+    padding-block: 2.25rem;
+  }
+
+  /* Slightly smaller headings so they don't feel cramped */
+  .hero__title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .section-heading__title {
+    font-size: 1.6rem;
+  }
+
+  /* Single-column grids for comfortable stacking */
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .polaroid-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .anniversary-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+
+  /* Larger tap areas for navigation links */
+  .navbar__link {
+    padding-block: 0.6rem;
+  }
+}
+
 /* ---- 4.7 Timeline layout (memories page) ---- */
 
 .timeline {
@@ -1060,6 +1106,8 @@ body.js .fade-in-up.is-visible {
 .jigsaw-piece {
   width: 72px;
   height: 72px;
+  min-width: 48px;
+  min-height: 48px;
   border-radius: 18px;
   border: 1px dashed rgba(148, 163, 184, 0.6);
   background-image: url('images/jigsaw.jpg');
