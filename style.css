@@ -541,10 +541,11 @@ ul, ol {
 }
 
 .cv-section-card {
-  padding: 1.4rem 1.5rem;
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.16);
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
 }
 
 .cv-section-card__title {
@@ -589,6 +590,7 @@ ul, ol {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
     align-items: flex-start;
+    gap: 2rem;
   }
 }
 
