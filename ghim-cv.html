@@ -25,6 +25,17 @@
     <!-- Preload & shared stylesheet -->
     <link rel="preload" href="style.css" as="style" />
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Preload main profile image for faster LCP -->
+    <link
+      rel="preload"
+      href="images/Ghim.jpg"
+      as="image"
+      fetchpriority="high"
+    />
+
+    <!-- Shared navigation script (deferred) -->
+    <script src="script.js" defer></script>
   </head>
   <body>
     <!--
@@ -235,7 +246,5 @@
       </footer>
     </div>
 
-    <!-- Shared navigation toggle script -->
-    <script src="script.js" defer></script>
   </body>
 </html>
