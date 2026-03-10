@@ -1222,7 +1222,7 @@ body.js .fade-in-up.is-visible {
 .jigsaw-panel__subtitle {
   margin-top: 0.3rem;
   font-size: var(--font-size-sm);
-  color: var(--color-text-soft);
+  color: #333333;
 }
 
 .jigsaw-pieces {
@@ -1327,7 +1327,7 @@ body.js .fade-in-up.is-visible {
   margin-bottom: 1.4rem;
   text-align: center;
   font-size: var(--font-size-sm);
-  color: var(--color-text-soft);
+  color: #333333;
 }
 
 /* ==========================

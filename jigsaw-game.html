@@ -154,15 +154,15 @@
                     3x3 grid cells (drop zones)
                     - Each cell expects a piece with the same number as data-cell-id
                   -->
-                  <div class="jigsaw-cell" data-cell-id="1" role="gridcell" aria-label="ช่องที่ 1"></div>
-                  <div class="jigsaw-cell" data-cell-id="2" role="gridcell" aria-label="ช่องที่ 2"></div>
-                  <div class="jigsaw-cell" data-cell-id="3" role="gridcell" aria-label="ช่องที่ 3"></div>
-                  <div class="jigsaw-cell" data-cell-id="4" role="gridcell" aria-label="ช่องที่ 4"></div>
-                  <div class="jigsaw-cell" data-cell-id="5" role="gridcell" aria-label="ช่องที่ 5"></div>
-                  <div class="jigsaw-cell" data-cell-id="6" role="gridcell" aria-label="ช่องที่ 6"></div>
-                  <div class="jigsaw-cell" data-cell-id="7" role="gridcell" aria-label="ช่องที่ 7"></div>
-                  <div class="jigsaw-cell" data-cell-id="8" role="gridcell" aria-label="ช่องที่ 8"></div>
-                  <div class="jigsaw-cell" data-cell-id="9" role="gridcell" aria-label="ช่องที่ 9"></div>
+                  <div class="jigsaw-cell" data-cell-id="1" role="gridcell" aria-label="ช่องวางจิ๊กซอว์ตำแหน่งที่ 1"></div>
+                  <div class="jigsaw-cell" data-cell-id="2" role="gridcell" aria-label="ช่องวางจิ๊กซอว์ตำแหน่งที่ 2"></div>
+                  <div class="jigsaw-cell" data-cell-id="3" role="gridcell" aria-label="ช่องวางจิ๊กซอว์ตำแหน่งที่ 3"></div>
+                  <div class="jigsaw-cell" data-cell-id="4" role="gridcell" aria-label="ช่องวางจิ๊กซอว์ตำแหน่งที่ 4"></div>
+                  <div class="jigsaw-cell" data-cell-id="5" role="gridcell" aria-label="ช่องวางจิ๊กซอว์ตำแหน่งที่ 5"></div>
+                  <div class="jigsaw-cell" data-cell-id="6" role="gridcell" aria-label="ช่องวางจิ๊กซอว์ตำแหน่งที่ 6"></div>
+                  <div class="jigsaw-cell" data-cell-id="7" role="gridcell" aria-label="ช่องวางจิ๊กซอว์ตำแหน่งที่ 7"></div>
+                  <div class="jigsaw-cell" data-cell-id="8" role="gridcell" aria-label="ช่องวางจิ๊กซอว์ตำแหน่งที่ 8"></div>
+                  <div class="jigsaw-cell" data-cell-id="9" role="gridcell" aria-label="ช่องวางจิ๊กซอว์ตำแหน่งที่ 9"></div>
                 </div>
 
                 <!-- Success message appears only when puzzle is correctly completed -->
@@ -464,8 +464,13 @@
           piece.className = 'jigsaw-piece jigsaw-piece--' + id;
           piece.setAttribute('draggable', 'true');
           piece.setAttribute('data-piece-id', String(id));
-          // ARIA label so screen readers can announce each piece clearly
-          piece.setAttribute('aria-label', 'ชิ้นส่วนหัวใจหมายเลข ' + id);
+          // Accessibility: make each piece focusable and announceable as a draggable button
+          piece.setAttribute('role', 'button');
+          piece.setAttribute('tabindex', '0');
+          piece.setAttribute(
+            'aria-label',
+            'ชิ้นส่วนจิ๊กซอว์หมายเลข ' + id + ' สามารถลากได้'
+          );
 
           piece.addEventListener('dragstart', handleDragStart);
 
@@ -479,7 +484,10 @@
           // Reinforce ARIA metadata for assistive technologies
           cell.setAttribute('role', 'gridcell');
           if (cellId) {
-            cell.setAttribute('aria-label', 'ช่องที่ ' + cellId);
+            cell.setAttribute(
+              'aria-label',
+              'ช่องวางจิ๊กซอว์ตำแหน่งที่ ' + cellId
+            );
           }
 
           cell.addEventListener('dragover', handleDragOver);
@@ -491,6 +499,6 @@
     </script>
 
     <!-- Shared navigation toggle script -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
