@@ -1217,12 +1217,13 @@ body.js .fade-in-up.is-visible {
 .jigsaw-panel__title {
   font-size: var(--font-size-lg);
   font-weight: 700;
+  color: #1a1a1a !important;
 }
 
 .jigsaw-panel__subtitle {
   margin-top: 0.3rem;
   font-size: var(--font-size-sm);
-  color: #222222;
+  color: #1a1a1a !important;
 }
 
 .jigsaw-pieces {
@@ -1240,10 +1241,6 @@ body.js .fade-in-up.is-visible {
   min-height: 48px;
   border-radius: 18px;
   border: 1px dashed rgba(148, 163, 184, 0.6);
-  background-image: url('images/jigsaw.jpg');
-  /* 3x3 sprite so scale entire image to 3x3 pieces */
-  background-size: 300% 300%;
-  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1251,20 +1248,28 @@ body.js .fade-in-up.is-visible {
   box-shadow: var(--shadow-subtle);
 }
 
+.jigsaw-piece img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+}
+
 .jigsaw-piece:active {
   cursor: grabbing;
 }
 
 /* Individual sprite slices (3 columns x 3 rows) */
-.jigsaw-piece--1 { background-position: left top; }
-.jigsaw-piece--2 { background-position: center top; }
-.jigsaw-piece--3 { background-position: right top; }
-.jigsaw-piece--4 { background-position: left center; }
-.jigsaw-piece--5 { background-position: center center; }
-.jigsaw-piece--6 { background-position: right center; }
-.jigsaw-piece--7 { background-position: left bottom; }
-.jigsaw-piece--8 { background-position: center bottom; }
-.jigsaw-piece--9 { background-position: right bottom; }
+.jigsaw-piece--1 img { object-position: left top; }
+.jigsaw-piece--2 img { object-position: center top; }
+.jigsaw-piece--3 img { object-position: right top; }
+.jigsaw-piece--4 img { object-position: left center; }
+.jigsaw-piece--5 img { object-position: center center; }
+.jigsaw-piece--6 img { object-position: right center; }
+.jigsaw-piece--7 img { object-position: left bottom; }
+.jigsaw-piece--8 img { object-position: center bottom; }
+.jigsaw-piece--9 img { object-position: right bottom; }
 
 .jigsaw-board {
   margin-top: 0.4rem;
@@ -1312,7 +1317,6 @@ body.js .fade-in-up.is-visible {
   height: 100%;
   border-radius: 0;
   border: none;
-  background-size: 300% 300%;
 }
 
 .jigsaw-success {
@@ -1320,14 +1324,14 @@ body.js .fade-in-up.is-visible {
   text-align: center;
   font-weight: 700;
   font-size: var(--font-size-lg);
-  color: #222222;
+  color: #1a1a1a !important;
 }
 
 .jigsaw-fallback {
   margin-bottom: 1.4rem;
   text-align: center;
   font-size: var(--font-size-sm);
-  color: #222222;
+  color: #1a1a1a !important;
 }
 
 /* ==========================
@@ -1378,7 +1382,7 @@ body.js .fade-in-up.is-visible {
 
 .modal__message {
   font-size: var(--font-size-sm);
-  color: #222222;
+  color: #1a1a1a !important;
   margin-bottom: 1.2rem;
 }
 

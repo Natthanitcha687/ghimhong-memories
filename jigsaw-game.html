@@ -45,7 +45,7 @@
           <button
             class="navbar-toggle"
             type="button"
-            aria-label="เปิดเมนู"
+            aria-label="เปิดเมนูนำทาง"
             aria-expanded="false"
           >
             <span class="navbar-toggle__icon" aria-hidden="true">
@@ -471,6 +471,17 @@
             'aria-label',
             'ชิ้นส่วนจิ๊กซอว์หมายเลข ' + id + ' สามารถลากได้'
           );
+
+          // Actual image element used for the jigsaw sprite slice
+          var img = document.createElement('img');
+          img.src = 'images/jigsaw.jpg';
+          img.alt = 'ชิ้นส่วนจิ๊กซอว์หมายเลข ' + id;
+          img.setAttribute('loading', 'lazy');
+          img.setAttribute('decoding', 'async');
+          img.width = 100; // ขนาดชิ้นส่วนจริง (กว้าง)
+          img.height = 100; // ขนาดชิ้นสวนจริง (สูง)
+
+          piece.appendChild(img);
 
           piece.addEventListener('dragstart', handleDragStart);
 
