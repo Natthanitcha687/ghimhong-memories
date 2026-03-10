@@ -870,21 +870,24 @@ ul, ol {
     z-index: 100 !important; /* keep above overlapping elements */
   }
 
-  /* เมื่อกดปุ่มแล้วมีคลาส is-open โผล่มา ให้แสดงเมนูแบบเต็มจอด้านล่าง header */
+  /* เมื่อกดปุ่มแล้วมีคลาส is-open โผล่มา ให้แสดงเมนูแบบ floating card ด้านล่าง header */
   .navbar__links.is-open {
     display: flex !important;
     flex-direction: column !important;
     position: absolute !important;
-    top: 100% !important; /* หล่นมาใต้ Navbar พอดีเป๊ะ */
-    left: 0 !important;
-    width: 100% !important; /* กางเต็มหน้าจอมือถือ */
-    background: rgba(255, 255, 255, 0.98) !important;
+    top: 100% !important;
+    /* เปลี่ยนจาก width 100% เป็นเว้นระยะซ้าย-ขวาเล็กน้อย */
+    left: 1rem !important;
+    right: 1rem !important;
+    width: auto !important;
+    margin-top: 0.5rem !important; /* เว้นระยะจากแถบ Navbar ด้านบน */
+    background: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(15px) !important;
-    box-shadow: 0 15px 25px rgba(0,0,0,0.1) !important;
-    padding: 1rem 0 1.5rem 0 !important; /* ลดกรอบพื้นที่ว่างบน-ล่างของกล่องเมนูรวม */
-    align-items: center !important; /* จัดปุ่มให้อยู่กึ่งกลาง */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
+    padding: 1.5rem 0 !important;
+    align-items: center !important;
     z-index: 99 !important;
-    border-radius: 0 0 20px 20px !important; /* มุมโค้งด้านล่างเพิ่มความละมุน */
+    border-radius: 20px !important; /* โค้งมนทั้ง 4 มุมให้ดูเป็นกล่องลอยตัว */
   }
 
   /* เพิ่มระยะห่างระหว่างแต่ละปุ่มในเมนูที่เปิดออก */
