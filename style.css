@@ -1232,6 +1232,8 @@ body.js .fade-in-up.is-visible {
   gap: 0.75rem;
   min-height: 170px;
   align-content: flex-start;
+  content-visibility: auto;
+  contain-intrinsic-size: 300px;
 }
 
 .jigsaw-piece {
@@ -1278,6 +1280,8 @@ body.js .fade-in-up.is-visible {
   gap: 0;
   max-width: 320px;
   margin-inline: auto;
+  content-visibility: auto;
+  contain-intrinsic-size: 300px;
 }
 
 .jigsaw-cell {
@@ -1332,6 +1336,11 @@ body.js .fade-in-up.is-visible {
   text-align: center;
   font-size: var(--font-size-sm);
   color: #1a1a1a !important;
+}
+
+/* Ensure game description text has strong, explicit contrast */
+.section-heading__subtitle {
+  color: #444444 !important;
 }
 
 /* ==========================
