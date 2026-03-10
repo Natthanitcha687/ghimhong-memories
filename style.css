@@ -881,7 +881,7 @@ ul, ol {
     background: rgba(255, 255, 255, 0.98) !important;
     backdrop-filter: blur(15px) !important;
     box-shadow: 0 15px 25px rgba(0,0,0,0.1) !important;
-    padding: 2rem 0 !important;
+    padding: 1rem 0 1.5rem 0 !important; /* ลดกรอบพื้นที่ว่างบน-ล่างของกล่องเมนูรวม */
     align-items: center !important; /* จัดปุ่มให้อยู่กึ่งกลาง */
     z-index: 99 !important;
     border-radius: 0 0 20px 20px !important; /* มุมโค้งด้านล่างเพิ่มความละมุน */
@@ -889,7 +889,7 @@ ul, ol {
 
   /* เพิ่มระยะห่างระหว่างแต่ละปุ่มในเมนูที่เปิดออก */
   .navbar__links.is-open li {
-    margin: 0.8rem 0 !important;
+    margin: 0.3rem 0 !important; /* ลดระยะห่างระหว่างแต่ละปุ่ม */
     width: 100% !important;
     text-align: center !important;
   }
@@ -897,9 +897,9 @@ ul, ol {
   /* ปรับขนาดปุ่มแคปซูลให้จิ้มง่ายขึ้นบนมือถือ */
   .navbar__links.is-open a {
     display: inline-block !important;
-    width: 60% !important; /* ให้แคปซูลกว้างสวยงาม */
-    padding: 0.8rem 1rem !important;
-    font-size: 1.1rem !important;
+    width: 55% !important; /* ให้แคปซูลเพรียวลงเล็กน้อย */
+    padding: 0.6rem 1rem !important; /* ลดความอ้วนของปุ่ม */
+    font-size: 1rem !important; /* ขนาดฟอนต์กำลังพอดี */
   }
 }
 
