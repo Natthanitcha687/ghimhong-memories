@@ -1392,10 +1392,10 @@ body.js .fade-in-up.is-visible {
 }
 
 .modal__actions .btn.btn--primary {
-  background: linear-gradient(135deg, #fef3ff, #e0ecff);
-  color: #222222 !important;
+  background: linear-gradient(135deg, #4f46e5, #312e81);
+  color: #ffffff !important;
 }
 
 .modal__actions .btn.btn--primary:hover {
-  filter: brightness(1.05);
+  filter: brightness(1.08);
 }

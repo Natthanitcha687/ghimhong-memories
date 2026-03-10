@@ -11,7 +11,7 @@
     <title>Jigsaw Game | Ghim &amp; Tonkla - Personal Website</title>
     <meta
       name="description"
-      content="A little pastel jigsaw heart game for Ghim &amp; Tonkla."
+      content="เว็บไซต์บันทึกความทรงจำของกิมและต้นกล้า"
     />
 
     <!-- Google Fonts: Sarabun (primary Thai font) -->
@@ -22,7 +22,8 @@
       rel="stylesheet"
     />
 
-    <!-- Global pastel theme & layout utilities -->
+    <!-- Preload & global pastel stylesheet -->
+    <link rel="preload" href="./style.css" as="style" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -112,7 +113,7 @@
             </p>
 
             <!-- Jigsaw layout: flexbox wrapper with two main panels -->
-            <div class="jigsaw-layout" aria-label="Jigsaw heart game layout">
+            <div class="jigsaw-layout" role="application" aria-label="เกมต่อจิ๊กซอว์หัวใจ ลากชิ้นส่วนจากกล่องด้านซ้ายไปวางให้ตรงช่องบนกระดานด้านขวา">
               <!-- Pieces container (source of draggable pieces) -->
               <section
                 class="jigsaw-panel jigsaw-panel--pieces"
@@ -472,14 +473,15 @@
             'ชิ้นส่วนจิ๊กซอว์หมายเลข ' + id + ' สามารถลากได้'
           );
 
-          // Actual image element used for the jigsaw sprite slice
+          // Actual image element used for the jigsaw sprite slice (decorative only)
           var img = document.createElement('img');
           img.src = 'images/jigsaw.jpg';
-          img.alt = 'ชิ้นส่วนจิ๊กซอว์หมายเลข ' + id;
+          img.alt = '';
+          img.setAttribute('aria-hidden', 'true');
           img.setAttribute('loading', 'lazy');
           img.setAttribute('decoding', 'async');
           img.width = 100; // ขนาดชิ้นส่วนจริง (กว้าง)
-          img.height = 100; // ขนาดชิ้นสวนจริง (สูง)
+          img.height = 100; // ขนาดชิ้นส่วนจริง (สูง)
 
           piece.appendChild(img);
 

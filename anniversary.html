@@ -11,7 +11,7 @@
     <title>Anniversary Clock | Ghim &amp; Tonkla - Personal Website</title>
     <meta
       name="description"
-      content="Real-time countup clock showing how long Ghim &amp; Tonkla have been together since July 26, 2022."
+      content="เว็บไซต์บันทึกความทรงจำของกิมและต้นกล้า"
     />
 
     <!-- Google Fonts: Sarabun (primary Thai font) -->
@@ -22,7 +22,8 @@
       rel="stylesheet"
     />
 
-    <!-- Global pastel theme & layout utilities -->
+    <!-- Preload & global pastel stylesheet -->
+    <link rel="preload" href="./style.css" as="style" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -231,6 +232,6 @@
     </script>
 
     <!-- Shared navigation toggle script -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
