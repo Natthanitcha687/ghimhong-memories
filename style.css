@@ -22,7 +22,7 @@
 
   --color-accent: #7dd3fc; /* light cyan accent */
   --color-text: #1f2933; /* dark slate */
-  --color-text-soft: #4a4a4a; /* muted but higher contrast */
+  --color-text-soft: #222222; /* stronger contrast for pastel backgrounds */
   --color-border-subtle: rgba(148, 163, 184, 0.28);
 
   --gradient-hero: radial-gradient(circle at top left, #e0f2ff 0, transparent 55%),
@@ -1222,7 +1222,7 @@ body.js .fade-in-up.is-visible {
 .jigsaw-panel__subtitle {
   margin-top: 0.3rem;
   font-size: var(--font-size-sm);
-  color: #333333;
+  color: #222222;
 }
 
 .jigsaw-pieces {
@@ -1320,14 +1320,14 @@ body.js .fade-in-up.is-visible {
   text-align: center;
   font-weight: 700;
   font-size: var(--font-size-lg);
-  color: var(--color-secondary);
+  color: #222222;
 }
 
 .jigsaw-fallback {
   margin-bottom: 1.4rem;
   text-align: center;
   font-size: var(--font-size-sm);
-  color: #333333;
+  color: #222222;
 }
 
 /* ==========================
@@ -1378,7 +1378,7 @@ body.js .fade-in-up.is-visible {
 
 .modal__message {
   font-size: var(--font-size-sm);
-  color: var(--color-text-soft);
+  color: #222222;
   margin-bottom: 1.2rem;
 }
 
@@ -1388,7 +1388,8 @@ body.js .fade-in-up.is-visible {
 }
 
 .modal__actions .btn.btn--primary {
-  background: linear-gradient(135deg, #6da8ff, #4f46e5);
+  background: linear-gradient(135deg, #fef3ff, #e0ecff);
+  color: #222222 !important;
 }
 
 .modal__actions .btn.btn--primary:hover {
