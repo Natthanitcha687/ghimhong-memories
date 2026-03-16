@@ -1,5 +1,4 @@
- (function () {
-  function initGame() {
+function initGame() {
     var piecesContainer = document.getElementById('pieces-container');
     var board = document.getElementById('puzzle-board');
 
@@ -308,9 +307,7 @@
     });
   }
 
-  // Delay initialization slightly so the browser can finish painting LCP first
-  setTimeout(function () {
-    initGame();
-    cell.addEventListener('drop', handleDrop);
-})();
-})();
+// Run game setup after window load and 150ms delay
+window.addEventListener('load', function () {
+  setTimeout(initGame, 150);
+});
