@@ -2,6 +2,7 @@
   function initGame() {
     var piecesContainer = document.getElementById('pieces-container');
     var board = document.getElementById('puzzle-board');
+
     var successMessage = document.getElementById('jigsaw-success');
     var fallbackMessage = document.getElementById('jigsaw-fallback');
 
@@ -14,6 +15,53 @@
     if (!piecesContainer || !board) {
       return;
     }
+
+    // --- Create 9 drop zones if not present ---
+    if (board.children.length < 9) {
+      board.innerHTML = '';
+      for (var i = 1; i <= 9; i++) {
+        var cell = document.createElement('div');
+        cell.className = 'drop-zone';
+        cell.setAttribute('data-cell-id', i);
+        cell.setAttribute('role', 'gridcell');
+        cell.setAttribute('aria-label', 'ช่องวางจิ๊กซอว์ตำแหน่งที่ ' + i);
+        board.appendChild(cell);
+      }
+    }
+
+    // Add drag & drop events to all drop-zones
+    var dropZones = board.querySelectorAll('.drop-zone, .jigsaw-cell');
+    dropZones.forEach(function(cell) {
+      cell.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        cell.classList.add('drag-over');
+      });
+      cell.addEventListener('dragenter', function(e) {
+        e.preventDefault();
+        cell.classList.add('drag-over');
+      });
+      cell.addEventListener('dragleave', function(e) {
+        cell.classList.remove('drag-over');
+      });
+      cell.addEventListener('drop', function(e) {
+        e.preventDefault();
+        var id = e.dataTransfer.getData('text/plain');
+        var piece = board.ownerDocument.querySelector('.jigsaw-piece[data-piece-id="' + id + '"]');
+        if (piece) {
+          // Remove any existing piece in this cell
+          var existing = cell.querySelector('.jigsaw-piece');
+          if (existing && existing !== piece) {
+            piecesContainer.appendChild(existing);
+          }
+          cell.appendChild(piece);
+          piece.setAttribute('aria-grabbed', 'false');
+          // ซ่อนขอบช่องเมื่อมีชิ้นส่วน
+          cell.style.border = 'none';
+        }
+        cell.classList.remove('drag-over');
+        checkCompletion();
+      });
+    });
 
     // Hide the fallback text now that JavaScript is confirmed to be running
     if (fallbackMessage) {
@@ -125,31 +173,25 @@
 
     function handleDrop(event) {
       event.preventDefault();
-
       var cell = event.currentTarget;
-
       if (!event.dataTransfer) {
         clearDragOverState(event);
         return;
       }
-
       var id = event.dataTransfer.getData('text/plain');
       if (!id) {
         clearDragOverState(event);
         return;
       }
-
       var piece = board.ownerDocument.querySelector(
         '.jigsaw-piece[data-piece-id="' + id + '"]'
       );
-
       if (!piece) {
         clearDragOverState(event);
         return;
       }
-
+      // Remove any existing piece in this cell
       var existing = cell.firstElementChild;
-
       if (existing && existing !== piece) {
         if (dragSourceCell && dragSourceCell !== piecesContainer) {
           dragSourceCell.appendChild(existing);
@@ -158,16 +200,13 @@
           piecesContainer.appendChild(existing);
         }
       }
-
-      // Append the dragged piece into this cell (the drop target)
+      // Always append the dragged piece into this cell
       cell.appendChild(piece);
       updateCellFilledState(cell);
-
+      // Remove highlight class after drop
+      cell.classList.remove('jigsaw-cell--over');
       // Piece is no longer actively grabbed once dropped
       piece.setAttribute('aria-grabbed', 'false');
-
-      clearDragOverState(event);
-
       // After each successful drop, evaluate whether the puzzle is complete
       checkCompletion();
     }
@@ -213,12 +252,18 @@
     // ---- Initialize pieces and wire up events ----
 
     ids.forEach(function (id) {
+      // กำหนดขนาดกระดานและชิ้นส่วน
+      var BOARD_SIZE = 300; // px
+      var GRID = 3;
+      var PIECE_SIZE = BOARD_SIZE / GRID;
+      var IMAGE_URL = 'images/jigsaw.jpg';
+
       var piece = document.createElement('div');
       piece.className = 'jigsaw-piece jigsaw-piece--' + id;
       piece.setAttribute('draggable', 'true');
       piece.setAttribute('data-piece-id', String(id));
 
-      // Accessibility: make each piece focusable and announceable as a draggable button
+      // Accessibility
       piece.setAttribute('role', 'button');
       piece.tabIndex = 0;
       piece.setAttribute('aria-grabbed', 'false');
@@ -227,19 +272,21 @@
         'ชิ้นส่วนจิ๊กซอว์หมายเลข ' + id + ' สามารถลากได้'
       );
 
-      // Actual image element used for the jigsaw sprite slice
-      var img = document.createElement('img');
-      img.src = 'images/jigsaw.jpg';
-      img.alt = 'ชิ้นส่วนจิ๊กซอว์ที่ ' + id;
-      img.setAttribute('loading', 'lazy');
-      img.setAttribute('decoding', 'async');
-      img.width = 100;
-      img.height = 100;
+      // คำนวณตำแหน่ง row, col (1-based id)
+      var idx = id - 1;
+      var row = Math.floor(idx / GRID);
+      var col = idx % GRID;
+      var bgX = -col * PIECE_SIZE;
+      var bgY = -row * PIECE_SIZE;
 
-      piece.appendChild(img);
+      piece.style.width = PIECE_SIZE + 'px';
+      piece.style.height = PIECE_SIZE + 'px';
+      piece.style.backgroundImage = "url('images/jigsaw.jpg')";
+      piece.style.backgroundSize = BOARD_SIZE + 'px ' + BOARD_SIZE + 'px';
+      piece.style.backgroundPosition = bgX + 'px ' + bgY + 'px';
+      piece.style.backgroundRepeat = 'no-repeat';
 
       piece.addEventListener('dragstart', handleDragStart);
-
       piecesContainer.appendChild(piece);
     });
 

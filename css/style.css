@@ -1,3 +1,43 @@
+.piece, .jigsaw-piece {
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+/* Jigsaw puzzle board grid (force 3x3, 300x300px) */
+.puzzle-board, .jigsaw-board {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  width: 300px;
+  height: 300px;
+  gap: 0;
+  margin: 0 auto;
+}
+
+.drop-zone, .jigsaw-cell {
+  width: 100px;
+  height: 100px;
+  border: 2px dashed #ffc0cb;
+  box-sizing: border-box;
+  position: relative;
+  background: #fff;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.drop-zone.drag-over, .jigsaw-cell.jigsaw-cell--over {
+  background: #e1ecff;
+  border-color: #6da8ff;
+}
+
+.drop-zone .piece, .jigsaw-cell .jigsaw-piece {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
 /*
   Global Styles for "Ghim & Tonkla's World"
   - Mobile‑first, semantic, and lightweight
@@ -514,8 +554,22 @@ ul, ol {
 .polaroid-grid {
   margin-top: 2.5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .polaroid-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .polaroid-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1.5rem;
+  }
 }
 
 .polaroid-card {
@@ -540,9 +594,9 @@ ul, ol {
 .polaroid-card__image {
   display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 250px;
   border-radius: 4px;
-  object-fit: cover;
+  object-fit: cover !important;
 }
 
 .polaroid-card__caption {
@@ -1237,43 +1291,30 @@ body.js .fade-in-up.is-visible {
 }
 
 .jigsaw-piece {
-  width: 72px;
-  height: 72px;
-  min-width: 48px;
-  min-height: 48px;
-  border-radius: 18px;
-  border: 1px dashed rgba(148, 163, 184, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* width/height set inline by JS */
+  border-radius: 8px;
+  border: 1px solid #eee;
+  display: block;
   cursor: grab;
-  box-shadow: var(--shadow-subtle);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin: 4px;
+  background-color: #fff;
+  user-select: none;
+  transition: box-shadow 0.2s;
 }
 
-.jigsaw-piece img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: inherit;
-  display: block;
-}
+
 
 .jigsaw-piece:active {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
   cursor: grabbing;
 }
 
-/* Individual sprite slices (3 columns x 3 rows) */
-.jigsaw-piece--1 img { object-position: left top; }
-.jigsaw-piece--2 img { object-position: center top; }
-.jigsaw-piece--3 img { object-position: right top; }
-.jigsaw-piece--4 img { object-position: left center; }
-.jigsaw-piece--5 img { object-position: center center; }
-.jigsaw-piece--6 img { object-position: right center; }
-.jigsaw-piece--7 img { object-position: left bottom; }
-.jigsaw-piece--8 img { object-position: center bottom; }
-.jigsaw-piece--9 img { object-position: right bottom; }
+
 
 .jigsaw-board {
+    position: relative;
+  }
   margin-top: 0.4rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1285,6 +1326,8 @@ body.js .fade-in-up.is-visible {
 }
 
 .jigsaw-cell {
+    position: relative;
+    overflow: hidden;
   min-height: 0;
   aspect-ratio: 1 / 1;
   border-radius: 8px;
@@ -1317,10 +1360,14 @@ body.js .fade-in-up.is-visible {
 /* When a piece is placed on the board, let it fill the cell and remove rounding/border
    so that all 9 slices join seamlessly into one image. */
 .jigsaw-board .jigsaw-piece {
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
-  border: none;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
 }
 
 .jigsaw-success {
