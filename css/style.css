@@ -1,9 +1,13 @@
+/* ==========================
+   ส่วนจัดการจิ๊กซอว์ (Jigsaw)
+   ========================== */
+/* ลบขอบ/ระยะห่างของชิ้นจิ๊กซอว์ให้แนบสนิท */
 .piece, .jigsaw-piece {
   border: none !important;
   margin: 0 !important;
   padding: 0 !important;
 }
-/* Jigsaw puzzle board grid (force 3x3, 300x300px) */
+/* กำหนด grid 3x3 สำหรับกระดานจิ๊กซอว์ */
 .puzzle-board, .jigsaw-board {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
@@ -12,7 +16,7 @@
   gap: 0;
   margin: 0 auto;
 }
-
+/* ช่องวางจิ๊กซอว์แต่ละช่อง */
 .drop-zone, .jigsaw-cell {
   width: 100px;
   height: 100px;
@@ -22,12 +26,12 @@
   background: #fff;
   transition: background 0.2s, border-color 0.2s;
 }
-
+/* ตอนลากชิ้นส่วนมาวาง hover ให้เปลี่ยนสีขอบ */
 .drop-zone.drag-over, .jigsaw-cell.jigsaw-cell--over {
   background: #e1ecff;
   border-color: #6da8ff;
 }
-
+/* ให้ชิ้นจิ๊กซอว์ขยายเต็ม cell */
 .drop-zone .piece, .jigsaw-cell .jigsaw-piece {
   width: 100% !important;
   height: 100% !important;
@@ -38,14 +42,10 @@
   border: none !important;
   border-radius: 0 !important;
 }
-/*
-  Global Styles for "Ghim & Tonkla's World"
-  - Mobile‑first, semantic, and lightweight
-  - Pastel blue / pink theme with soft shadows & rounded corners
-  - Designed for use across all 5 pages in the project
-
-  NOTE: In HTML, load Google Font "Sarabun" via <link> in <head> for best performance.
-*/
+/* ==========================
+   ตัวแปรสี ฟอนต์ (Variables)
+   ========================== */
+/* กำหนดสีหลัก ฟอนต์ และขนาดต่าง ๆ ของเว็บ */
 
 /* ==========================
    1. CSS Custom Properties
@@ -99,8 +99,9 @@
 }
 
 /* ==========================
-   2. Modern CSS Reset
-   ========================== */
+  2. Modern CSS Reset
+  ========================== */
+/* รีเซ็ตค่าพื้นฐานของ HTML ทุกอย่างให้เหมือนกันทุกเบราว์เซอร์ */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -161,8 +162,9 @@ ul, ol {
 }
 
 /* ==========================
-   3. Layout Utilities
-   ========================== */
+  3. Layout Utilities
+  ========================== */
+/* คลาสช่วยจัด layout เช่น flex, grid, container, section */
 
 /* Page wrapper ensures content never touches viewport edges on mobile */
 .page-wrapper {
@@ -264,8 +266,9 @@ ul, ol {
 }
 
 /* ==========================
-   4. Global Components
-   ========================== */
+  4. Global Components
+  ========================== */
+/* ส่วนประกอบหลักของเว็บ เช่น Navbar, ปุ่ม, Card, Gallery */
 
 /* ---- 4.1 Top Navigation ---- */
 .site-header {
@@ -314,6 +317,7 @@ ul, ol {
 }
 
 /* Hamburger toggle button (shown only on small screens) */
+/* ปุ่มแฮมเบอร์เกอร์สำหรับเปิดเมนูบนมือถือ */
 .navbar-toggle {
   display: none;
   border: none;
@@ -368,6 +372,7 @@ ul, ol {
 }
 
 /* Mobile nav: stack links if needed */
+/* เมนูแนวตั้งบนมือถือ */
 @media (max-width: 640px) {
   .navbar {
     gap: 0.75rem;
@@ -551,6 +556,7 @@ ul, ol {
 }
 
 /* ---- 4.7 Polaroid memory gallery (memories page) ---- */
+/* จัดแกลลอรีรูปโพลารอยด์ให้เป็น grid 1,2,4 คอลัมน์ตามขนาดจอ */
 .polaroid-grid {
   margin-top: 2.5rem;
   display: grid;
@@ -843,8 +849,9 @@ ul, ol {
 }
 
 /* ==========================
-   Mobile-specific refinements
-   ========================== */
+  Mobile-specific refinements
+  ========================== */
+/* ปรับแต่งเฉพาะมือถือ เช่น เมนู, ขนาดปุ่ม, layout */
 @media (max-width: 768px) {
   /* Relaxed horizontal padding & vertical rhythm on small screens */
   .container {
@@ -961,6 +968,7 @@ ul, ol {
 }
 
   /* สำหรับหน้าจอ Desktop (ใหญ่กว่า 768px) */
+  /* ซ่อนปุ่มแฮมเบอร์เกอร์เวลาเปิดบนจอคอม */
   @media (min-width: 769px) {
     /* ซ่อนปุ่มแฮมเบอร์เกอร์ */
     .navbar-toggle {
@@ -985,6 +993,7 @@ ul, ol {
   }
 
 /* ---- 4.7 Timeline layout (memories page) ---- */
+/* เส้น timeline และกล่องเหตุการณ์ใน memories */
 
 .timeline {
   position: relative;
@@ -1088,6 +1097,7 @@ ul, ol {
 }
 
 /* ---- 4.8 Anniversary counter layout ---- */
+/* กล่องนับวันรัก (Anniversary) */
 
 .anniversary {
   text-align: center;
@@ -1169,6 +1179,7 @@ ul, ol {
 }
 
 /* ---- 4.9 Footer ---- */
+/* ส่วนท้ายเว็บ */
 .site-footer {
   padding-block: 1.75rem 1.85rem;
   font-size: var(--font-size-xs);
@@ -1189,8 +1200,9 @@ ul, ol {
 }
 
 /* ==========================
-   5. Utilities & States
-   ========================== */
+  5. Utilities & States
+  ========================== */
+/* คลาสอรรถประโยชน์ เช่น .hidden, .text-center, .fade-in-up */
 
 .text-center { text-align: center; }
 .text-soft { color: var(--color-text-soft); }
@@ -1232,8 +1244,9 @@ body.js .fade-in-up.is-visible {
 }
 
 /* ==========================
-   6. Jigsaw Game Layout
-   ========================== */
+  6. Jigsaw Game Layout
+  ========================== */
+/* ส่วนจัด layout เฉพาะของเกมจิ๊กซอว์ */
 
 .jigsaw-layout {
   display: flex;
@@ -1391,8 +1404,9 @@ body.js .fade-in-up.is-visible {
 }
 
 /* ==========================
-   Jigsaw Modal Pop-up
-   ========================== */
+  Jigsaw Modal Pop-up
+  ========================== */
+/* กล่องป๊อปอัปแสดงข้อความตอนต่อจิ๊กซอว์สำเร็จ */
 
 .modal-backdrop {
   position: fixed;

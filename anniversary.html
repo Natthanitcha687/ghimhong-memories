@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="th">
   <head>
+    <!-- ส่วนหัว (Head) - ตั้งค่าฟอนต์, meta, ลิงก์ CSS -->
     <!--
       Head section for Anniversary page
       - Uses shared Sarabun font and global stylesheet
@@ -27,13 +28,16 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+    <!-- เริ่มต้นเนื้อหาเว็บ Anniversary -->
     <!--
       Page wrapper so footer stays at bottom even on tall screens.
       Content remains fully usable when CSS/JS are disabled.
     -->
     <div class="page-wrapper">
+      <!-- Section: Header (เมนูนำทางด้านบน) -->
       <!-- Shared header & navigation with active state on "Anniversary" -->
       <header class="site-header">
+        <!-- Navbar + โลโก้ + เมนู -->
         <div class="container navbar" aria-label="Main navigation">
           <!-- Brand / logo area -->
           <a href="index.html" class="navbar__brand">
@@ -83,32 +87,25 @@
         </div>
       </header>
 
-      <!--
-        Main content area
-        - Centered anniversary clock using existing utility classes
-      -->
+      <!-- Section: Main Content (นาฬิกานับเวลารัก) -->
       <main class="main" id="main-content">
         <section class="section">
           <div class="container anniversary">
-            <!-- Heart badge at the top -->
+            <!-- หัวใจไอคอนด้านบน -->
             <div class="anniversary__badge" aria-hidden="true">❤</div>
 
-            <!-- Headline & subtext -->
+            <!-- หัวข้อหลัก + คำอธิบาย -->
             <h1 class="anniversary__title">Our Time Together</h1>
             <p class="anniversary__subtitle">
               ตั้งแต่วันที่ 26 กรกฎาคม พ.ศ. 2565
             </p>
 
-            <!-- Sweet supporting line -->
+            <!-- ข้อความซึ้ง ๆ -->
             <p class="mt-md">
               นับทุกวินาทีที่เราอยู่ด้วยกัน เพราะทุกวินาทีมีค่าที่สุดสำหรับเรา
             </p>
 
-            <!--
-              Counter grid
-              - Four cards for days, hours, minutes, seconds
-              - Each span has a fallback message in case JavaScript is disabled
-            -->
+            <!-- Anniversary Counter: แสดงจำนวนวัน ชั่วโมง นาที วินาที -->
             <div class="anniversary-grid mt-md" aria-label="Time we have been together">
               <!-- Days card -->
               <div class="anniversary-pill">
@@ -135,7 +132,7 @@
               </div>
             </div>
 
-            <!-- Fallback description when JavaScript is disabled -->
+            <!-- ข้อความ fallback ถ้า JS ปิด -->
             <p class="mt-md text-soft" id="clock-fallback">
               กำลังคำนวณเวลา... หากคุณปิดการทำงานของ JavaScript
               จะไม่สามารถแสดงนาฬิกานับเวลานี้ได้ แต่ความทรงจำยังอยู่เหมือนเดิม 💙
@@ -144,7 +141,7 @@
         </section>
       </main>
 
-      <!-- Shared footer -->
+      <!-- Section: Footer (ปิดท้ายเว็บ) -->
       <footer class="site-footer">
         <div class="container site-footer__inner">
           <p>

@@ -1,6 +1,8 @@
+<!-- หน้าแรกของเว็บไซต์ Ghim & Tonkla - มีเมนู, hero, ลิงก์ไปแต่ละหน้า -->
 <!doctype html>
 <html lang="th">
   <head>
+    <!-- ส่วนหัว (Head) - ตั้งค่าฟอนต์, meta, ลิงก์ CSS -->
     <!--
       Head section
       - Loads Thai font "Sarabun" from Google Fonts
@@ -28,12 +30,14 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+    <!-- เริ่มต้นเนื้อหาเว็บทั้งหมด -->
     <!--
       Page wrapper
       - Flex column so footer stays at bottom
       - Works without CSS as a normal linear page
     -->
     <div class="page-wrapper">
+      <!-- Section: Header (เมนูนำทางด้านบน) -->
       <!--
         Site header & navigation
         - Semantic <header> with <nav>
@@ -41,6 +45,7 @@
         - Designed mobile‑first, then enhanced with sticky / blur in CSS
       -->
       <header class="site-header">
+        <!-- Navbar + โลโก้ + เมนู -->
         <div class="container navbar" aria-label="Main navigation">
           <!-- Brand / logo area -->
           <a href="index.html" class="navbar__brand">
@@ -90,17 +95,9 @@
         </div>
       </header>
 
-      <!--
-        Main content
-        - Contains hero section and quick links
-        - Structured with <main> and <section> elements for clarity
-      -->
+      <!-- Section: Main Content (Hero + Quick Links) -->
       <main class="main" id="main-content">
-        <!--
-          Hero section
-          - Introduces the website with a large heading
-          - Call‑to‑action buttons guide users to story & anniversary clock
-        -->
+        <!-- Hero Section: แนะนำเว็บ + ปุ่มลัด -->
         <section class="section section--hero">
           <div class="container hero">
             <!-- Small badge / eyebrow text above main headline -->
@@ -138,11 +135,7 @@
           </div>
         </section>
 
-        <!--
-          Quick links section
-          - Uses CSS Grid (card-grid) to layout four cards
-          - Each card acts as a large, tappable link to another page
-        -->
+        <!-- Quick Links Section: ลิงก์ไปแต่ละหน้า -->
         <section
           class="section section--subtle"
           aria-labelledby="quick-links-heading"
@@ -213,11 +206,7 @@
         </section>
       </main>
 
-      <!--
-        Site footer
-        - Simple closing line and attribution
-        - Still readable and meaningful without any styling
-      -->
+      <!-- Section: Footer (ปิดท้ายเว็บ) -->
       <footer class="site-footer">
         <div class="container site-footer__inner">
           <p>

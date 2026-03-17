@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="th">
   <head>
+    <!-- ส่วนหัว (Head) - ตั้งค่าฟอนต์, meta, ลิงก์ CSS -->
     <!--
       Head section for Ghim's CV page
       - Uses the same font and stylesheet as the home page
@@ -38,17 +39,20 @@
     <script src="js/script.js" defer></script>
   </head>
   <body>
+    <!-- เริ่มต้นเนื้อหาเว็บ Ghim's CV -->
     <!--
       Page wrapper keeps footer at the bottom and
       still works as simple linear content if CSS is disabled.
     -->
     <div class="page-wrapper">
+      <!-- Section: Header (เมนูนำทางด้านบน) -->
       <!--
         Shared site header and navigation
         - Same structure as index.html
         - Active state set to "Ghim's CV" for this page
       -->
       <header class="site-header">
+        <!-- Navbar + โลโก้ + เมนู -->
         <div class="container navbar" aria-label="Main navigation">
           <!-- Brand / logo area -->
           <a href="index.html" class="navbar__brand">
@@ -98,15 +102,11 @@
         </div>
       </header>
 
-      <!--
-        Main content area
-        - Uses CSS Grid (.cv-layout) to create a 2‑column layout on larger screens
-        - On mobile, columns stack vertically (mobile‑first)
-      -->
+      <!-- Section: Main Content (โปรไฟล์ + การศึกษา + งานอดิเรก) -->
       <main class="main" id="main-content">
         <section class="section" aria-labelledby="ghim-cv-heading">
           <div class="container">
-            <!-- Page heading for screen readers and users -->
+            <!-- หัวข้อหลักของหน้า CV -->
             <header class="section-heading text-center">
               <p class="section-heading__eyebrow">
                 <span aria-hidden="true">👩‍💻</span>
@@ -118,16 +118,9 @@
               </p>
             </header>
 
-            <!--
-              CV layout wrapper
-              - Sidebar (profile) on the left
-              - Detail sections (education, hobbies) on the right
-            -->
+            <!-- CV Layout: ซ้ายโปรไฟล์ ขวารายละเอียด -->
             <div class="cv-layout" aria-label="Ghimhong profile layout">
-              <!--
-                Profile sidebar (left column)
-                - Profile image and key personal information
-              -->
+              <!-- Sidebar: ข้อมูลโปรไฟล์ -->
               <aside class="cv-layout__sidebar" aria-label="Basic profile information">
                 <article class="cv-section-card cv-profile-card">
                   <figure class="text-center">
@@ -180,11 +173,7 @@
                 </article>
               </aside>
 
-              <!--
-                Right column: detailed CV sections
-                - Education
-                - Hobbies / passions
-              -->
+              <!-- Main: การศึกษา + งานอดิเรก -->
               <section class="cv-layout__main" aria-label="Detailed CV sections">
                 <!-- Education card -->
                 <div class="info-card">
@@ -234,7 +223,7 @@
         </section>
       </main>
 
-      <!-- Shared footer, same as index.html -->
+      <!-- Section: Footer (ปิดท้ายเว็บ) -->
       <footer class="site-footer">
         <div class="container site-footer__inner">
           <p>

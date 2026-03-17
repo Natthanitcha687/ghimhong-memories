@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="th">
   <head>
+    <!-- ส่วนหัว (Head) - ตั้งค่าฟอนต์, meta, ลิงก์ CSS -->
     <!--
       Head section for Our Memories page
       - Reuses shared font and stylesheet
@@ -27,13 +28,16 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+    <!-- เริ่มต้นเนื้อหาเว็บ Memories -->
     <!--
       Page wrapper for sticky header + footer at bottom.
       Content stays linear and readable even without CSS or JS.
     -->
     <div class="page-wrapper">
+      <!-- Section: Header (เมนูนำทางด้านบน) -->
       <!-- Shared header & navigation with active state on "Our Memories" -->
       <header class="site-header">
+        <!-- Navbar + โลโก้ + เมนู -->
         <div class="container navbar" aria-label="Main navigation">
           <!-- Brand / logo area -->
           <a href="index.html" class="navbar__brand">
@@ -83,14 +87,11 @@
         </div>
       </header>
 
-      <!--
-        Main content area
-        - Polaroid style memory gallery using CSS Grid
-      -->
+      <!-- Section: Main Content (แกลลอรีโพลารอยด์) -->
       <main class="main" id="main-content">
         <section class="section" aria-labelledby="memories-heading">
           <div class="container">
-            <!-- Page heading + subtitle -->
+            <!-- หัวข้อหลักของหน้า Memories -->
             <header class="section-heading">
               <p class="section-heading__eyebrow">
                 <span aria-hidden="true">📸</span>
@@ -104,11 +105,7 @@
               </p>
             </header>
 
-            <!--
-              Polaroid gallery
-              - Uses CSS Grid for responsive layout
-              - Each memory is an <article> for semantic grouping
-            -->
+            <!-- Polaroid Gallery: รวมความทรงจำ -->
             <div
               class="polaroid-grid"
               aria-label="Polaroid gallery of our memories"
@@ -260,7 +257,7 @@
         </section>
       </main>
 
-      <!-- Shared footer -->
+      <!-- Section: Footer (ปิดท้ายเว็บ) -->
       <footer class="site-footer">
         <div class="container site-footer__inner">
           <p>

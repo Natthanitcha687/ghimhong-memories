@@ -1,3 +1,9 @@
+// =============================
+// เกมจิ๊กซอว์ (Jigsaw Puzzle)
+// =============================
+// โค้ดนี้ใช้สร้างเกมจิ๊กซอว์ 3x3 พร้อมรองรับทั้ง mouse และ touch (มือถือ)
+
+// ฟังก์ชันหลักสำหรับเริ่มต้นเกมจิ๊กซอว์
 function initGame() {
     var piecesContainer = document.getElementById('pieces-container');
     var board = document.getElementById('puzzle-board');
@@ -5,17 +11,17 @@ function initGame() {
     var successMessage = document.getElementById('jigsaw-success');
     var fallbackMessage = document.getElementById('jigsaw-fallback');
 
-    // Modal elements for friendly messages instead of alert()
+    // ตัวแปร modal สำหรับแสดงข้อความ popup (แทน alert())
     var modalBackdrop = document.getElementById('jigsaw-modal-backdrop');
     var modalMessageEl = document.getElementById('jigsaw-modal-message');
     var modalButton = document.getElementById('jigsaw-modal-button');
 
-    // Guard: if required DOM elements are missing for some reason, exit early
+    // ถ้า element สำคัญหายไป จะไม่รันเกม (กัน error)
     if (!piecesContainer || !board) {
       return;
     }
 
-    // --- Create 9 drop zones if not present ---
+    // --- สร้างช่องวางจิ๊กซอว์ 9 ช่อง ถ้ายังไม่มี ---
     if (board.children.length < 9) {
       board.innerHTML = '';
       for (var i = 1; i <= 9; i++) {
@@ -28,7 +34,7 @@ function initGame() {
       }
     }
 
-    // Add drag & drop events to all drop-zones
+    // เพิ่ม event drag & drop ให้แต่ละช่องวาง
     var dropZones = board.querySelectorAll('.drop-zone, .jigsaw-cell');
     dropZones.forEach(function(cell) {
       cell.addEventListener('dragover', function(e) {
@@ -62,14 +68,14 @@ function initGame() {
       });
     });
 
-    // Hide the fallback text now that JavaScript is confirmed to be running
+    // ซ่อนข้อความ fallback ถ้า JS ทำงานได้
     if (fallbackMessage) {
       fallbackMessage.classList.add('hidden');
     }
 
     var PIECE_COUNT = 9;
 
-    // Utility: simple Fisher-Yates shuffle for an array
+    // ฟังก์ชัน shuffle array (Fisher-Yates)
     function shuffle(array) {
       for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
@@ -80,18 +86,17 @@ function initGame() {
       return array;
     }
 
-    // Create an array [1, 2, ... 9] and shuffle it
+    // สร้าง array id ชิ้นจิ๊กซอว์ 1-9 แล้วสลับลำดับ
     var ids = [];
     for (var n = 1; n <= PIECE_COUNT; n++) {
       ids.push(n);
     }
     shuffle(ids);
 
-    // Track where a piece is dragged from so we can support swapping
-    // pieces that are already on the board.
+    // ตัวแปรเก็บ cell ต้นทางเวลาลาก (ใช้สลับชิ้นที่อยู่บนกระดาน)
     var dragSourceCell = null;
 
-    // Simple helpers to open/close the custom modal popup
+    // ฟังก์ชันเปิด/ปิด modal popup
     function openModal(message) {
       if (!modalBackdrop || !modalMessageEl) return;
       modalMessageEl.textContent = message;
@@ -117,8 +122,9 @@ function initGame() {
       });
     }
 
-    // ---- Drag and Drop handlers ----
+    // ---- ฟังก์ชัน Drag & Drop สำหรับ desktop ----
 
+    // เริ่มลากชิ้นจิ๊กซอว์ (desktop)
     function handleDragStart(event) {
       var piece = event.currentTarget;
 
@@ -141,6 +147,7 @@ function initGame() {
 
     // Ensure cell visuals (dashed border vs seamless) match whether
     // a piece is currently placed inside.
+    // อัปเดตสถานะ cell ว่ามีชิ้นจิ๊กซอว์หรือไม่ (desktop)
     function updateCellFilledState(cell) {
       if (!cell || !cell.classList || !cell.classList.contains('jigsaw-cell')) {
         return;
@@ -152,6 +159,7 @@ function initGame() {
       }
     }
 
+    // ขณะลากอยู่เหนือ cell (desktop)
     function handleDragOver(event) {
       event.preventDefault();
 
@@ -160,16 +168,19 @@ function initGame() {
       }
     }
 
+    // ลากเข้า cell (desktop)
     function handleDragEnter(event) {
       var cell = event.currentTarget;
       cell.classList.add('jigsaw-cell--over');
     }
 
+    // ออกจาก cell (desktop)
     function clearDragOverState(event) {
       var cell = event.currentTarget;
       cell.classList.remove('jigsaw-cell--over');
     }
 
+    // วางชิ้นจิ๊กซอว์ลง cell (desktop)
     function handleDrop(event) {
       event.preventDefault();
       var cell = event.currentTarget;
@@ -210,6 +221,7 @@ function initGame() {
       checkCompletion();
     }
 
+    // ตรวจสอบว่าต่อจิ๊กซอว์ครบและถูกต้องหรือยัง
     function checkCompletion() {
       var cells = board.querySelectorAll('.jigsaw-cell');
       var filledCount = 0;
@@ -248,8 +260,17 @@ function initGame() {
       }
     }
 
-    // ---- Initialize pieces and wire up events ----
 
+    // ---- สร้างชิ้นจิ๊กซอว์และผูก event ----
+    // ตัวแปรเก็บสถานะการลากด้วยนิ้ว (touch)
+    var touchDrag = {
+      piece: null,
+      offsetX: 0,
+      offsetY: 0,
+      ghost: null
+    };
+
+    // วนลูปสร้างชิ้นจิ๊กซอว์แต่ละชิ้น
     ids.forEach(function (id) {
       // กำหนดขนาดกระดานและชิ้นส่วน
       var BOARD_SIZE = 300; // px
@@ -262,7 +283,7 @@ function initGame() {
       piece.setAttribute('draggable', 'true');
       piece.setAttribute('data-piece-id', String(id));
 
-      // Accessibility
+      // ตั้งค่า accessibility ให้ชิ้นจิ๊กซอว์
       piece.setAttribute('role', 'button');
       piece.tabIndex = 0;
       piece.setAttribute('aria-grabbed', 'false');
@@ -285,10 +306,78 @@ function initGame() {
       piece.style.backgroundPosition = bgX + 'px ' + bgY + 'px';
       piece.style.backgroundRepeat = 'no-repeat';
 
+      // ผูก event drag & drop (desktop)
       piece.addEventListener('dragstart', handleDragStart);
+
+      // --- ฟังก์ชัน touch event สำหรับมือถือ ---
+      // เริ่มลากด้วยนิ้ว (touchstart)
+      piece.addEventListener('touchstart', function (e) {
+        if (e.touches.length !== 1) return;
+        e.preventDefault();
+        touchDrag.piece = piece;
+        var touch = e.touches[0];
+        var rect = piece.getBoundingClientRect();
+        touchDrag.offsetX = touch.clientX - rect.left;
+        touchDrag.offsetY = touch.clientY - rect.top;
+
+        // Create ghost
+        var ghost = piece.cloneNode(true);
+        ghost.style.position = 'fixed';
+        ghost.style.pointerEvents = 'none';
+        ghost.style.opacity = '0.7';
+        ghost.style.zIndex = '9999';
+        ghost.style.left = (touch.clientX - touchDrag.offsetX) + 'px';
+        ghost.style.top = (touch.clientY - touchDrag.offsetY) + 'px';
+        ghost.style.width = rect.width + 'px';
+        ghost.style.height = rect.height + 'px';
+        document.body.appendChild(ghost);
+        touchDrag.ghost = ghost;
+      });
+
+      // ขณะลากด้วยนิ้ว (touchmove)
+      piece.addEventListener('touchmove', function (e) {
+        if (!touchDrag.piece || !touchDrag.ghost) return;
+        var touch = e.touches[0];
+        touchDrag.ghost.style.left = (touch.clientX - touchDrag.offsetX) + 'px';
+        touchDrag.ghost.style.top = (touch.clientY - touchDrag.offsetY) + 'px';
+      });
+
+      // วางชิ้นจิ๊กซอว์ด้วยนิ้ว (touchend)
+      piece.addEventListener('touchend', function (e) {
+        if (!touchDrag.piece || !touchDrag.ghost) return;
+        var touch = e.changedTouches[0];
+        // Find drop target under finger
+        var dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+        while (dropTarget && !dropTarget.classList.contains('jigsaw-cell') && !dropTarget.classList.contains('drop-zone')) {
+          dropTarget = dropTarget.parentElement;
+        }
+        if (dropTarget && (dropTarget.classList.contains('jigsaw-cell') || dropTarget.classList.contains('drop-zone'))) {
+          // Remove any existing piece in this cell
+          var existing = dropTarget.firstElementChild;
+          if (existing && existing !== touchDrag.piece) {
+            piecesContainer.appendChild(existing);
+          }
+          dropTarget.appendChild(touchDrag.piece);
+          touchDrag.piece.setAttribute('aria-grabbed', 'false');
+          dropTarget.classList.remove('drag-over');
+          // Hide border if needed
+          dropTarget.style.border = 'none';
+          // Evaluate completion
+          checkCompletion();
+        }
+        // Remove ghost
+        if (touchDrag.ghost && touchDrag.ghost.parentNode) {
+          touchDrag.ghost.parentNode.removeChild(touchDrag.ghost);
+        }
+        touchDrag.piece = null;
+        touchDrag.ghost = null;
+      });
+
+      // เพิ่มชิ้นจิ๊กซอว์ลงถาด
       piecesContainer.appendChild(piece);
     });
 
+    // ผูก event ให้ cell แต่ละช่อง (drag & drop)
     var cells = board.querySelectorAll('.jigsaw-cell');
     cells.forEach(function (cell) {
       var cellId = cell.getAttribute('data-cell-id');
@@ -307,7 +396,7 @@ function initGame() {
     });
   }
 
-// Run game setup after window load and 150ms delay
+// เริ่มเกมหลังโหลดหน้าเว็บและรอ 150ms เพื่อให้ DOM พร้อม
 window.addEventListener('load', function () {
   setTimeout(initGame, 150);
 });
