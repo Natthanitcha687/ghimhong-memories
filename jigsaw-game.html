@@ -28,6 +28,7 @@
 
     <!-- Preload main jigsaw image used for pieces -->
     <link rel="preload" href="images/jigsaw.jpg" as="image" fetchpriority="high" />
+    <link rel="preload" as="image" href="images/jigsaw.jpg" fetchpriority="high">
     <!-- Main jigsaw image for puzzle, lazy loading for performance -->
     <img src="images/jigsaw.jpg" alt="Jigsaw Heart" loading="lazy" style="display:none;" />
 
@@ -158,7 +159,7 @@
                   id="puzzle-board"
                   class="jigsaw-board"
                   role="grid"
-                  aria-label="3 by 3 heart puzzle board"
+                  aria-label="กระดานต่อจิ๊กซอว์"
                 >
                   <!--
                     3x3 grid cells (drop zones)

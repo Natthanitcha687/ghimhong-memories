@@ -4,7 +4,7 @@
 // โค้ดนี้ใช้สร้างเกมจิ๊กซอว์ 3x3 พร้อมรองรับทั้ง mouse และ touch (มือถือ)
 
 // ฟังก์ชันหลักสำหรับเริ่มต้นเกมจิ๊กซอว์
-function initGame() {
+function _initGameCore() {
     var piecesContainer = document.getElementById('pieces-container');
     var board = document.getElementById('puzzle-board');
 
@@ -387,7 +387,7 @@ function initGame() {
       cell.setAttribute('aria-dropeffect', 'move');
 
       if (cellId) {
-        cell.setAttribute('aria-label', 'ช่องวางจิ๊กซอว์ตำแหน่งที่ ' + cellId);
+        cell.setAttribute('aria-label', 'ช่องว่างสำหรับวางจิ๊กซอว์ตำแหน่งที่ ' + cellId);
       }
 
       cell.addEventListener('dragover', handleDragOver);
@@ -396,7 +396,11 @@ function initGame() {
     });
   }
 
-// เริ่มเกมหลังโหลดหน้าเว็บและรอ 150ms เพื่อให้ DOM พร้อม
+// เริ่มเกมหลังโหลดหน้าเว็บแบบไม่บล็อก rendering (ลด TBT)
 window.addEventListener('load', function () {
-  setTimeout(initGame, 150);
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(_initGameCore, {timeout: 200});
+  } else {
+    setTimeout(_initGameCore, 150);
+  }
 });
