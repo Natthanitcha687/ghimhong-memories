@@ -1,3 +1,24 @@
+@media (max-width: 768px) {
+  #puzzle-board {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    align-self: center !important;
+    justify-self: center !important;
+  }
+}
+@media (max-width: 768px) {
+  /* จัดกึ่งกลางคอนเทนเนอร์ที่ครอบกระดาน */
+  .board-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  /* บังคับกระดานให้อยู่ตรงกลาง */
+  .puzzle-board {
+    margin: 0 auto !important;
+  }
+}
 /* ==========================
    ส่วนจัดการจิ๊กซอว์ (Jigsaw)
    ========================== */
@@ -626,13 +647,27 @@ ul, ol {
   z-index: 2;
 }
 
-@media (min-width: 768px) {
-  .polaroid-grid {
-    gap: 2rem;
+@media (max-width: 768px) {
+  .jigsaw-panel--board {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #puzzle-board {
+    align-self: center !important;
+    margin: 20px auto 0 auto !important;
+    padding: 0 !important;
+    position: static !important;
+    transform: none !important;
+    inset: auto !important;
   }
 }
-
-.cv-section-card {
   padding: 2rem;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.9);
