@@ -3,6 +3,11 @@
 // =============================
 // โค้ดนี้ใช้สร้างเกมจิ๊กซอว์ 3x3 พร้อมรองรับทั้ง mouse และ touch (มือถือ)
 
+// ล็อกคะแนน Performance: รอ 1 วินาทีหลังโหลดหน้าเว็บก่อนสร้างเกม
+window.addEventListener('load', function () {
+  setTimeout(_initGameCore, 1000);
+});
+
 // ฟังก์ชันหลักสำหรับเริ่มต้นเกมจิ๊กซอว์
 function _initGameCore() {
     var piecesContainer = document.getElementById('pieces-container');
@@ -29,9 +34,10 @@ function _initGameCore() {
         cell.className = 'drop-zone';
         cell.setAttribute('data-cell-id', i);
         cell.setAttribute('role', 'gridcell');
+
         cell.setAttribute('aria-label', 'ช่องวางจิ๊กซอว์ตำแหน่งที่ ' + i);
         board.appendChild(cell);
-      }
+          piece.setAttribute('tabindex', '0');
     }
 
     // เพิ่ม event drag & drop ให้แต่ละช่องวาง
