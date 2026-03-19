@@ -28,10 +28,12 @@
 
     <!-- Preload main jigsaw image used for pieces -->
     <link rel="preload" href="images/jigsaw.jpg" as="image" fetchpriority="high" />
+    <!-- Main jigsaw image for puzzle, lazy loading for performance -->
+    <img src="images/jigsaw.jpg" alt="Jigsaw Heart" loading="lazy" style="display:none;" />
 
     <!-- Jigsaw logic and shared navigation (deferred to avoid blocking) -->
-    <script src="js/jigsaw-game.js" defer></script>
-    <script src="js/script.js" defer></script>
+    <script src="js/jigsaw-game.js" async></script>
+    <script src="js/script.js" async></script>
   </head>
   <body>
     <!-- Page wrapper so footer sits at the bottom while keeping content readable without CSS -->
