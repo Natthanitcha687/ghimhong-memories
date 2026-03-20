@@ -1684,3 +1684,96 @@ body.js .fade-in-up.is-visible {
 .modal__actions .btn.btn--primary:hover {
   filter: brightness(1.08);
 }
+
+/* =========================================
+   MOBILE JIGSAW OVERRIDE (ล็อกสเปกสำหรับจอ 768px ลงมา)
+   บังคับขนาด 70px และคำนวณพิกัดรูปใหม่ทับ JS
+   ========================================= */
+@media (max-width: 768px) {
+  /* 1. บังคับกล่องชิ้นส่วนให้เรียง 3 คอลัมน์ (คอลัมน์ละ 70px) */
+  #pieces-container {
+    display: grid !important;
+    grid-template-columns: repeat(3, 70px) !important;
+    gap: 8px !important;
+    justify-content: center !important;
+    margin-bottom: 20px !important;
+    max-width: 100% !important;
+  }
+
+  /* 2. บังคับกระดานและช่องวางให้เป็น 70px */
+  #puzzle-board {
+    display: grid !important;
+    grid-template-columns: repeat(3, 70px) !important;
+    grid-template-rows: repeat(3, 70px) !important;
+    width: 210px !important;
+    height: 210px !important;
+    margin: 0 auto !important;
+    gap: 0 !important;
+  }
+  .jigsaw-cell, .drop-zone {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  /* 3. บังคับชิ้นส่วนจิ๊กซอว์ให้หดเหลือ 70px และล็อกสเกลรูป (3 เท่า = 210px) */
+  .jigsaw-piece, .piece {
+    width: 70px !important;
+    height: 70px !important;
+    min-width: 70px !important;
+    max-width: 70px !important;
+    background-size: 210px 210px !important;
+    margin: 0 !important;
+  }
+
+  /* 4. จุดแตกหัก!: ล็อกพิกัดรูปใหม่สำหรับ 70px ทับคำสั่ง JS ทิ้งไปเลย! */
+  .jigsaw-piece[data-piece-id="1"] { background-position: 0 0 !important; }
+  .jigsaw-piece[data-piece-id="2"] { background-position: -70px 0 !important; }
+  .jigsaw-piece[data-piece-id="3"] { background-position: -140px 0 !important; }
+  .jigsaw-piece[data-piece-id="4"] { background-position: 0 -70px !important; }
+  .jigsaw-piece[data-piece-id="5"] { background-position: -70px -70px !important; }
+  .jigsaw-piece[data-piece-id="6"] { background-position: -140px -70px !important; }
+  .jigsaw-piece[data-piece-id="7"] { background-position: 0 -140px !important; }
+  .jigsaw-piece[data-piece-id="8"] { background-position: -70px -140px !important; }
+  .jigsaw-piece[data-piece-id="9"] { background-position: -140px -140px !important; }
+
+  /* 5. เวลาลากไปวางในช่องกระดาน ให้ขยายเต็มช่องและลบขอบมนออก */
+  .jigsaw-board .jigsaw-piece {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+}
+
+/* =========================================
+   MOBILE MEMORIES (2 คอลัมน์ + บูสต์สปีด 🚀)
+   ========================================= */
+@media (max-width: 768px) {
+  .polaroid-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    padding: 10px !important;
+  }
+  
+  .polaroid-card {
+    padding: 8px 8px 15px 8px !important;
+    margin: 0 !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important; /* ลดเงาลงให้มือถือไม่ทำงานหนัก */
+    will-change: transform !important; /* ทำให้ตอนไถหน้าจอสมูทขึ้น */
+  }
+  
+  .polaroid-card__image {
+    width: 100% !important;
+    height: 150px !important;
+    object-fit: cover !important;
+    aspect-ratio: 1 / 1 !important;
+    content-visibility: auto !important; /* ไพ่ตาย! สั่งให้ไม่เรนเดอร์รูปจนกว่าจะเลื่อนไปถึง */
+  }
+  
+  .polaroid-card__caption {
+    font-size: 0.75rem !important;
+    line-height: 1.2 !important;
+    margin-top: 8px !important;
+  }
+}
