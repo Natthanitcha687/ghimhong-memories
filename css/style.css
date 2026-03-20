@@ -1,9 +1,189 @@
+    body #pieces-container div.piece {
+      width: 70px !important;
+      height: 70px !important;
+      min-width: 70px !important;
+      max-width: 70px !important;
+      flex: 0 0 70px !important;
+      padding: 0 !important;
+      aspect-ratio: unset !important;
+      transform: none !important;
+      background-size: 210px 210px !important;
+    }
+    body .drop-zone {
+      width: 70px !important;
+      height: 70px !important;
+      min-width: 70px !important;
+      max-width: 70px !important;
+      background-size: 210px 210px !important;
+    }
+    #pieces-container {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 10px !important;
+      width: 100% !important;
+    }
+  #pieces-container .piece {
+    width: 70px !important;
+    height: 70px !important;
+    flex: none !important;
+    min-width: unset !important;
+    max-width: unset !important;
+    min-height: unset !important;
+    max-height: unset !important;
+  }
 @media (max-width: 768px) {
+  /* Final mobile pixel-perfect layout with improved gaps and borders */
+  .jigsaw-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 10px !important;
+    margin: 0 !important;
+  }
+  .jigsaw-panel--pieces,
+  .jigsaw-panel--board {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    box-sizing: border-box !important;
+  }
+  .jigsaw-panel--board {
+    padding-bottom: 20px !important;
+    margin-top: 0 !important;
+    margin-bottom: 30px !important;
+    overflow: visible !important;
+  }
+  /* Hide long subtitles, show only short headings */
+  .section-heading__subtitle,
+  .jigsaw-panel__subtitle {
+    display: block !important;
+    opacity: 1 !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+  h1,
+  .section-heading__title,
+  .jigsaw-panel__title {
+    display: block !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: fit-content !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+  .section-heading__eyebrow {
+    font-size: 13px !important;
+    padding: 0.1rem 0.3rem !important;
+    margin-bottom: 0 !important;
+    text-align: center !important;
+    word-wrap: break-word !important;
+    white-space: normal !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+  .section-heading,
+  .jigsaw-panel__header {
+    margin-bottom: 0 !important;
+    padding: 2px 0 !important;
+    text-align: center !important;
+    word-wrap: break-word !important;
+    white-space: normal !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+  .section {
+    padding-block: 0.1rem !important;
+    margin: 0 !important;
+  }
+  /* Pieces container grid for 9 pieces, add gap and rows */
+  #pieces-container {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
+    padding: 10px !important;
+    justify-items: center !important;
+    margin: 0 auto !important;
+  }
+  .piece {
+    border-radius: 15px !important;
+    width: 70px !important;
+    height: 70px !important;
+    min-width: unset !important;
+    max-width: unset !important;
+    min-height: unset !important;
+    max-height: unset !important;
+    object-fit: unset !important;
+    background-size: 210px 210px !important;
+    background-repeat: no-repeat !important;
+  }
+    .drop-zone {
+      width: 70px !important;
+      height: 70px !important;
+      min-width: unset !important;
+      max-width: unset !important;
+      min-height: unset !important;
+      max-height: unset !important;
+      object-fit: unset !important;
+      background-size: 210px 210px !important;
+      background-repeat: no-repeat !important;
+      border: 1px dashed #ffb6c1 !important;
+    }
+      .piece.piece-1, .drop-zone.piece-1 { background-position: 0 0 !important; }
+      .piece.piece-2, .drop-zone.piece-2 { background-position: -80px 0 !important; }
+      .piece.piece-3, .drop-zone.piece-3 { background-position: -160px 0 !important; }
+      .piece.piece-4, .drop-zone.piece-4 { background-position: 0 -80px !important; }
+      .piece.piece-5, .drop-zone.piece-5 { background-position: -80px -80px !important; }
+      .piece.piece-6, .drop-zone.piece-6 { background-position: -160px -80px !important; }
+      .piece.piece-7, .drop-zone.piece-7 { background-position: 0 -160px !important; }
+      .piece.piece-8, .drop-zone.piece-8 { background-position: -80px -160px !important; }
+      .piece.piece-9, .drop-zone.piece-9 { background-position: -160px -160px !important; }
+    .piece.piece-1 { background-position: 0 0 !important; }
+    .piece.piece-2 { background-position: -80px 0 !important; }
+    .piece.piece-3 { background-position: -160px 0 !important; }
+    .piece.piece-4 { background-position: 0 -80px !important; }
+    .piece.piece-5 { background-position: -80px -80px !important; }
+    .piece.piece-6 { background-position: -160px -80px !important; }
+    .piece.piece-7 { background-position: 0 -160px !important; }
+    .piece.piece-8 { background-position: -80px -160px !important; }
+    .piece.piece-9 { background-position: -160px -160px !important; }
   #puzzle-board {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    align-self: center !important;
-    justify-self: center !important;
+    width: 210px !important;
+    height: 210px !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 70px) !important;
+    margin: 0 auto !important;
+    padding: 5px !important;
+    grid-template-rows: repeat(3, 70px) !important;
+    gap: 0 !important;
+    border: none !important;
+    box-sizing: content-box !important;
+    overflow: visible !important;
+    margin-bottom: 40px !important;
+  }
+    .piece.piece-1, .drop-zone.piece-1 { background-position: 0 0 !important; }
+    .piece.piece-2, .drop-zone.piece-2 { background-position: -70px 0 !important; }
+    .piece.piece-3, .drop-zone.piece-3 { background-position: -140px 0 !important; }
+    .piece.piece-4, .drop-zone.piece-4 { background-position: 0 -70px !important; }
+    .piece.piece-5, .drop-zone.piece-5 { background-position: -70px -70px !important; }
+    .piece.piece-6, .drop-zone.piece-6 { background-position: -140px -70px !important; }
+    .piece.piece-7, .drop-zone.piece-7 { background-position: 0 -140px !important; }
+    .piece.piece-8, .drop-zone.piece-8 { background-position: -70px -140px !important; }
+    .piece.piece-9, .drop-zone.piece-9 { background-position: -140px -140px !important; }
+  .drop-zone,
+  .jigsaw-cell {
+    width: 75px !important;
+    height: 75px !important;
+    font-size: 0.8rem !important;
+    margin: 0 !important;
+    border-bottom: 2px dashed #ffc0cb !important;
+    border-right: 2px dashed #ffc0cb !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
   }
 }
 @media (max-width: 768px) {
@@ -78,7 +258,7 @@
   --color-surface-soft: #f7f4ff;
   --color-primary: #6da8ff; /* pastel blue */
   --color-primary-soft: #e1ecff;
-  --color-secondary: #f9a8d4; /* pastel pink */
+  --color-secondary: #d16ba5; /* improved pink for contrast */
   --color-secondary-soft: #ffe4f2;
 
   --color-accent: #7dd3fc; /* light cyan accent */

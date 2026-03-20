@@ -14,6 +14,9 @@
       content="เว็บไซต์บันทึกความทรงจำของกิมและต้นกล้า"
     />
 
+    <!-- Improve performance: theme color for mobile -->
+    <meta name="theme-color" content="#ffffff" />
+
     <!-- Google Fonts: Sarabun (primary Thai font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,14 +30,14 @@
     <link rel="stylesheet" href="./css/style.css" />
 
     <!-- Preload main jigsaw image used for pieces -->
-    <link rel="preload" href="images/jigsaw.jpg" as="image" fetchpriority="high" />
     <link rel="preload" as="image" href="images/jigsaw.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="images/jigsaw.jpg">
     <!-- Main jigsaw image for puzzle, lazy loading for performance -->
     <img src="images/jigsaw.jpg" alt="Jigsaw Heart" loading="lazy" style="display:none;" />
 
     <!-- Jigsaw logic and shared navigation (deferred to avoid blocking) -->
-    <script src="js/jigsaw-game.js" async></script>
-    <script src="js/script.js" async></script>
+    <script src="js/jigsaw-game.js" defer></script>
+    <script src="js/script.js" defer></script>
   </head>
   <body>
     <!-- Page wrapper so footer sits at the bottom while keeping content readable without CSS -->
@@ -57,6 +60,7 @@
             class="navbar-toggle"
             type="button"
             aria-label="เปิดเมนูนำทาง"
+            aria-controls="navbar-menu"
             aria-expanded="false"
             tabindex="0"
           >
@@ -222,7 +226,7 @@
         <h2 id="jigsaw-modal-title" class="modal__title">Jigsaw Game</h2>
         <p id="jigsaw-modal-message" class="modal__message"></p>
         <div class="modal__actions">
-          <button type="button" id="jigsaw-modal-button" class="btn btn--primary">
+          <button type="button" id="jigsaw-modal-button" class="btn btn--primary" aria-label="ปิดหน้าต่างแจ้งเตือน">
             ตกลง
           </button>
         </div>
