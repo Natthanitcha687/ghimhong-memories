@@ -396,5 +396,5 @@ function _initGameCore() {
 // เริ่มเกมหลังโหลดหน้าเว็บแบบไม่บล็อก rendering (ลด TBT)
 // ล็อกคะแนน Performance: หน่วง 1 วินาทีหลังโหลดหน้าเว็บก่อนสร้างเกม
 window.addEventListener('load', function () {
-  setTimeout(_initGameCore, 1000);
+  setTimeout(_initGameCore, 100);
 });

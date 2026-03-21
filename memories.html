@@ -111,15 +111,16 @@
               aria-label="Polaroid gallery of our memories"
             >
               <!-- Card 1 -->
-              <article class="polaroid-card polaroid-card--tilt-left fade-in-up" data-memory-observe>
+              <article class="polaroid-card polaroid-card--tilt-left">
                 <figure class="polaroid-card__frame">
                   <img
                     src="images/memory-1.jpg"
                     alt="ดูคอนเสิร์ต Cocktail"
                     class="polaroid-card__image"
                     width="200"
-                    height="800"
+                    height="200"
                     decoding="async"
+                    fetchpriority="high"
                   />
                   <figcaption class="polaroid-card__caption">
                     คอนเสิร์ต Cocktail 🎵 ร้องเพลงโปรดไปด้วยกันสุดเสียง
@@ -128,16 +129,16 @@
               </article>
 
               <!-- Card 2 -->
-              <article class="polaroid-card polaroid-card--tilt-right fade-in-up" data-memory-observe>
+              <article class="polaroid-card polaroid-card--tilt-right">
                 <figure class="polaroid-card__frame">
                   <img
                     src="images/memory-2.jpg"
                     alt="เที่ยวคริสต์มาส"
                     class="polaroid-card__image"
                     width="200"
-                    height="800"
-                    loading="lazy"
+                    height="200"
                     decoding="async"
+                    fetchpriority="high"
                   />
                   <figcaption class="polaroid-card__caption">
                     เทศกาลคริสต์มาส 🎄 เดินดูไฟและบรรยากาศดีๆ ด้วยกัน
@@ -146,14 +147,14 @@
               </article>
 
               <!-- Card 3 -->
-              <article class="polaroid-card polaroid-card--tilt-left fade-in-up" data-memory-observe>
+              <article class="polaroid-card polaroid-card--tilt-left">
                 <figure class="polaroid-card__frame">
                   <img
                     src="images/memory-3.jpg"
                     alt="ออกกำลังกายด้วยกัน"
                     class="polaroid-card__image"
                     width="200"
-                    height="800"
+                    height="200"
                     loading="lazy"
                     decoding="async"
                   />
@@ -164,14 +165,14 @@
               </article>
 
               <!-- Card 4 -->
-              <article class="polaroid-card polaroid-card--tilt-right fade-in-up" data-memory-observe>
+              <article class="polaroid-card polaroid-card--tilt-right">
                 <figure class="polaroid-card__frame">
                   <img
                     src="images/memory-4.jpg"
                     alt="เที่ยวทะเล"
                     class="polaroid-card__image"
                     width="200"
-                    height="800"
+                    height="200"
                     loading="lazy"
                     decoding="async"
                   />
@@ -182,14 +183,14 @@
               </article>
 
               <!-- Card 5 -->
-              <article class="polaroid-card polaroid-card--tilt-left fade-in-up" data-memory-observe>
+              <article class="polaroid-card polaroid-card--tilt-left">
                 <figure class="polaroid-card__frame">
                   <img
                     src="images/memory-5.jpg"
                     alt="นั่งรถทัวร์กลับบ้าน"
                     class="polaroid-card__image"
                     width="200"
-                    height="800"
+                    height="200"
                     loading="lazy"
                     decoding="async"
                   />
@@ -200,14 +201,14 @@
               </article>
 
               <!-- Card 6 -->
-              <article class="polaroid-card polaroid-card--tilt-right fade-in-up" data-memory-observe>
+              <article class="polaroid-card polaroid-card--tilt-right">
                 <figure class="polaroid-card__frame">
                   <img
                     src="images/memory-6.jpg"
                     alt="ปั่นเรือเป็ด"
                     class="polaroid-card__image"
                     width="200"
-                    height="800"
+                    height="200"
                     loading="lazy"
                     decoding="async"
                   />
@@ -218,14 +219,14 @@
               </article>
 
               <!-- Card 7 -->
-              <article class="polaroid-card polaroid-card--tilt-left fade-in-up" data-memory-observe>
+              <article class="polaroid-card polaroid-card--tilt-left">
                 <figure class="polaroid-card__frame">
                   <img
                     src="images/memory-7.jpg"
                     alt="คอนเสิร์ต Yented"
                     class="polaroid-card__image"
                     width="200"
-                    height="800"
+                    height="200"
                     loading="lazy"
                     decoding="async"
                   />
@@ -236,14 +237,14 @@
               </article>
 
               <!-- Card 8 -->
-              <article class="polaroid-card polaroid-card--tilt-right fade-in-up" data-memory-observe>
+              <article class="polaroid-card polaroid-card--tilt-right">
                 <figure class="polaroid-card__frame">
                   <img
                     src="images/memory-8.jpg"
                     alt="รอคิวตี๋น้อย"
                     class="polaroid-card__image"
                     width="200"
-                    height="800"
+                    height="200"
                     loading="lazy"
                     decoding="async"
                   />
@@ -269,49 +270,6 @@
       </footer>
     </div>
 
-    <!--
-      Progressive enhancement: Intersection Observer scroll animation
-      - If JS or IntersectionObserver is not available, all cards stay visible.
-      - When supported, we add a .js class to <body> and animate
-        each .fade-in-up card when it enters the viewport.
-    -->
-    <script>
-      (function () {
-        // Guard: if browser doesn't support IntersectionObserver, exit early
-        if (!('IntersectionObserver' in window)) {
-          return;
-        }
-
-        // Mark that JavaScript is active so CSS can safely hide .fade-in-up
-        document.body.classList.add('js');
-
-        // Select all memory cards that should animate on scroll
-        var cards = document.querySelectorAll('[data-memory-observe]');
-        if (!cards.length) return;
-
-        // Create an observer with a slightly earlier trigger (0.15 of the card in view)
-        var observer = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                // Add .is-visible so CSS plays fade-in / slide-up animation
-                entry.target.classList.add('is-visible');
-                // Once animated, we no longer need to observe this element
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          {
-            threshold: 0.15,
-          }
-        );
-
-        // Attach the observer to each card
-        cards.forEach(function (card) {
-          observer.observe(card);
-        });
-      })();
-    </script>
     <!-- Shared navigation toggle script -->
     <script src="js/script.js" defer></script>
   </body>

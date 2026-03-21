@@ -848,12 +848,13 @@ ul, ol {
     inset: auto !important;
   }
 }
-  padding: 2rem;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  margin-bottom: 1.5rem;
-}
+  /* ---- Syntax error fix: orphaned properties below, not in any selector ---- */
+  /* padding: 2rem; */
+  /* border-radius: 16px; */
+  /* background: rgba(255, 255, 255, 0.9); */
+  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); */
+  /* margin-bottom: 1.5rem; */
+/* } */
 
 .cv-section-card__title {
   font-weight: 700;
@@ -1541,8 +1542,7 @@ body.js .fade-in-up.is-visible {
 
 
 .jigsaw-board {
-    position: relative;
-  }
+  position: relative;
   margin-top: 0.4rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1759,8 +1759,7 @@ body.js .fade-in-up.is-visible {
   .polaroid-card {
     padding: 8px 8px 15px 8px !important;
     margin: 0 !important;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important; /* ลดเงาลงให้มือถือไม่ทำงานหนัก */
-    will-change: transform !important; /* ทำให้ตอนไถหน้าจอสมูทขึ้น */
+    box-shadow: none !important;
   }
   
   .polaroid-card__image {
@@ -1768,7 +1767,6 @@ body.js .fade-in-up.is-visible {
     height: 150px !important;
     object-fit: cover !important;
     aspect-ratio: 1 / 1 !important;
-    content-visibility: auto !important; /* ไพ่ตาย! สั่งให้ไม่เรนเดอร์รูปจนกว่าจะเลื่อนไปถึง */
   }
   
   .polaroid-card__caption {
