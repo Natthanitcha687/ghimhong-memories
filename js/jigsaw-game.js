@@ -276,7 +276,7 @@ function _initGameCore() {
       var BOARD_SIZE = 300; // px
       var GRID = 3;
       var PIECE_SIZE = BOARD_SIZE / GRID;
-      var IMAGE_URL = 'images/jigsaw.jpg';
+      var IMAGE_URL = 'images/jigsaw.webp';
 
       var piece = document.createElement('div');
       piece.className = 'jigsaw-piece jigsaw-piece--' + id;
@@ -298,7 +298,7 @@ function _initGameCore() {
 
       piece.style.width = PIECE_SIZE + 'px';
       piece.style.height = PIECE_SIZE + 'px';
-      piece.style.backgroundImage = "url('images/jigsaw.jpg')";
+      piece.style.backgroundImage = "url('images/jigsaw.webp')";
       piece.style.backgroundSize = BOARD_SIZE + 'px ' + BOARD_SIZE + 'px';
       piece.style.backgroundPosition = bgX + 'px ' + bgY + 'px';
       piece.style.backgroundRepeat = 'no-repeat';
@@ -394,6 +394,4 @@ function _initGameCore() {
   }
 
 // สร้างเกมหลังโหลดหน้าเว็บเสร็จสมบูรณ์แบบ non-blocking (ลด TBT)
-window.addEventListener('load', function () {
-  setTimeout(_initGameCore, 150);
-});
+document.addEventListener('DOMContentLoaded', _initGameCore);
