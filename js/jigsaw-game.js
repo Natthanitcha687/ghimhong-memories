@@ -393,6 +393,7 @@ function _initGameCore() {
     });
   }
 
-// เริ่มเกมหลังโหลดหน้าเว็บแบบไม่บล็อก rendering (ลด TBT)
-// สร้างเกมทันทีที่ DOM โหลดเสร็จ (เร็วสุดสำหรับ Performance)
-document.addEventListener('DOMContentLoaded', _initGameCore);
+// สร้างเกมหลังโหลดหน้าเว็บเสร็จสมบูรณ์แบบ non-blocking (ลด TBT)
+window.addEventListener('load', function () {
+  setTimeout(_initGameCore, 150);
+});
