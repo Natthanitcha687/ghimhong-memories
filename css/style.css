@@ -1,3 +1,9 @@
+    /* Ensure jigsaw-cell always has fixed size for both desktop and mobile to prevent layout shift */
+    .jigsaw-cell {
+      width: 70px;
+      height: 70px;
+      box-sizing: border-box;
+    }
     body #pieces-container div.piece {
       width: 70px !important;
       height: 70px !important;

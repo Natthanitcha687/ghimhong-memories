@@ -27,7 +27,8 @@
 
     <!-- Preload & global pastel stylesheet -->
     <link rel="preload" href="./css/style.css" as="style" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <!-- Non-blocking CSS load for better performance -->
+    <link rel="stylesheet" href="./css/style.css" media="print" onload="this.media='all'">
 
     <!-- Preload main jigsaw image used for pieces -->
     <link rel="preload" as="image" href="images/jigsaw.jpg" fetchpriority="high">
