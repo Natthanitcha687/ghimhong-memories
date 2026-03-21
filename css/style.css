@@ -232,7 +232,7 @@
   box-sizing: border-box;
   position: relative;
   background: #fff;
-  transition: background 0.2s, border-color 0.2s;
+  transition: background 0.2s;
 }
 /* ตอนลากชิ้นส่วนมาวาง hover ให้เปลี่ยนสีขอบ */
 .drop-zone.drag-over, .jigsaw-cell.jigsaw-cell--over {
@@ -1520,7 +1520,8 @@ body.js .fade-in-up.is-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  min-height: 170px;
+  min-height: 240px !important;
+    min-height: 240px !important;
   align-content: flex-start;
   height: auto !important;
 }

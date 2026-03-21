@@ -40,12 +40,10 @@
         .section-heading__subtitle, .jigsaw-panel__subtitle { text-align: center; margin: 0 auto; }
       }
     </style>
-    <link rel="preload" href="./css/style.css" as="style" />
-    <!-- Non-blocking CSS load for better performance -->
-    <link rel="stylesheet" href="./css/style.css" media="print" onload="this.media='all'">
 
-    <!-- Preload main jigsaw image used for pieces -->
-    <link rel="preload" as="image" href="images/jigsaw.webp" fetchpriority="high">
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <link rel="preload" as="image" href="images/jigsaw.webp" fetchpriority="high" />
 
     <!-- Jigsaw logic and shared navigation (deferred to avoid blocking) -->
     <script src="js/jigsaw-game.js" defer></script>
