@@ -25,7 +25,23 @@
       rel="stylesheet"
     />
 
-    <!-- Preload & global pastel stylesheet -->
+
+    <!-- Inline critical CSS for above-the-fold layout (mobile only) -->
+    <style>
+      @media (max-width: 768px) {
+        html, body { min-height: 100vh; background: #fdf8ff; }
+        .page-wrapper { min-height: 100vh; display: flex; flex-direction: column; }
+        .main { flex: 1 0 auto; }
+        .jigsaw-layout { display: flex; flex-direction: column; align-items: center; padding: 10px; margin: 0; }
+        .jigsaw-panel--pieces, .jigsaw-panel--board { display: flex; flex-direction: column; align-items: center; width: auto; box-sizing: border-box; }
+        .jigsaw-board, #puzzle-board { min-width: 210px; min-height: 210px; width: 210px; height: 210px; display: grid; grid-template-columns: repeat(3, 70px); grid-template-rows: repeat(3, 70px); gap: 0; margin: 0 auto; box-sizing: border-box; }
+        #pieces-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px; justify-items: center; min-width: 210px; min-height: 210px; width: 210px; height: 210px; box-sizing: border-box; }
+        .jigsaw-cell, .drop-zone { min-width: 70px; min-height: 70px; width: 70px; height: 70px; box-sizing: border-box; position: relative; border: 1px dashed #ffb6c1; background: #fff; }
+        .jigsaw-piece, .piece { min-width: 70px; min-height: 70px; width: 70px; height: 70px; box-sizing: border-box; border-radius: 15px; background-size: 210px 210px; background-repeat: no-repeat; }
+        .section-heading__title, .jigsaw-panel__title { text-align: center; margin: 0 auto; }
+        .section-heading__subtitle, .jigsaw-panel__subtitle { text-align: center; margin: 0 auto; }
+      }
+    </style>
     <link rel="preload" href="./css/style.css" as="style" />
     <!-- Non-blocking CSS load for better performance -->
     <link rel="stylesheet" href="./css/style.css" media="print" onload="this.media='all'">
