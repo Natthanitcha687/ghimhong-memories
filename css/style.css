@@ -81,6 +81,7 @@
     width: fit-content !important;
     padding: 0 !important;
     max-width: 100% !important;
+    height: auto !important;
   }
   .section-heading__eyebrow {
     font-size: 13px !important;
@@ -1521,8 +1522,7 @@ body.js .fade-in-up.is-visible {
   gap: 0.75rem;
   min-height: 170px;
   align-content: flex-start;
-  content-visibility: auto;
-  contain-intrinsic-size: 300px;
+  height: auto !important;
 }
 
 .jigsaw-piece {
@@ -1595,6 +1595,7 @@ body.js .fade-in-up.is-visible {
    so that all 9 slices join seamlessly into one image. */
 .jigsaw-board .jigsaw-piece {
   width: 100% !important;
+  height: auto !important;
   height: 100% !important;
   position: absolute;
   top: 0;
@@ -1714,6 +1715,7 @@ body.js .fade-in-up.is-visible {
     width: 210px !important;
     height: 210px !important;
     margin: 0 auto !important;
+    height: auto !important;
     gap: 0 !important;
   }
   .jigsaw-cell, .drop-zone {
