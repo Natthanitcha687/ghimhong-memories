@@ -394,4 +394,4 @@ function _initGameCore() {
   }
 
 // สร้างเกมหลังโหลดหน้าเว็บเสร็จสมบูรณ์แบบ non-blocking (ลด TBT)
-document.addEventListener('DOMContentLoaded', _initGameCore);
+window.addEventListener('load', function () { setTimeout(_initGameCore, 250); });
